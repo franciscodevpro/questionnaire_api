@@ -1,0 +1,45 @@
+import {
+  accountSchema,
+  errorSchema,
+  loginParamsSchema,
+  accessTokenSchema,
+  signUpParamsSchema,
+  questionnaireParamsSchema,
+  questionnaireDataParamsSchema,
+  questionParamsSchema,
+  answerOptionParamsSchema,
+  answerParamsSchema,
+  applierParamsSchema,
+  deviceParamsSchema,
+
+  questionnaireSchema,
+  questionnaireDataSchema,
+  questionSchema,
+  answerOptionSchema,
+  answerSchema,
+  applierSchema,
+  deviceSchema,
+} from './schemas/';
+
+export default {
+  signUpParams: signUpParamsSchema,
+  loginParams: loginParamsSchema,
+  questionnaireParams: questionnaireParamsSchema,
+  questionnaireDataParams: questionnaireDataParamsSchema,
+  questionParams: questionParamsSchema,
+  answerOptionParams: answerOptionParamsSchema,
+  answerParams: answerParamsSchema,
+  applierParams: applierParamsSchema,
+  deviceParams: deviceParamsSchema,
+
+  questionnaire: questionnaireSchema,
+  questionnaireData: questionnaireDataSchema,
+  question: questionSchema,
+  answerOption: answerOptionSchema,
+  answer: answerSchema,
+  applier: applierSchema,
+  device: deviceSchema,
+  account: accountSchema,
+  accessToken: accessTokenSchema,
+  error: errorSchema
+};

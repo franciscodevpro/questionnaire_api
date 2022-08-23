@@ -1,0 +1,37 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Device {
+  id       String  @id @default(uuid())
+  name     String  @unique
+  pin      String  @unique
+  isActive Boolean
+
+  @@map("devices")
+}
+
+model Applier {
+  id       String  @id @default(uuid())
+  name     String  @unique
+  isActive Boolean
+
+  @@map("appliers")
+}
+
+model User {
+  id              String  @id @default(uuid())
+  login           String  @unique
+  password        String
+  name            String
+  token           String
+  tokenExpiration Int
+  isActive        Boolean
+
+  @@map("users")
+}
