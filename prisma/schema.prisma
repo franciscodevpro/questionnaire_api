@@ -8,18 +8,22 @@ datasource db {
 }
 
 model Device {
-  id       String  @id @default(uuid())
-  name     String  @unique
-  pin      String  @unique
-  isActive Boolean
+  id                     String                   @id @default(uuid())
+  name                   String                   @unique
+  pin                    String                   @unique
+  isActive               Boolean
+  questionnaires         Questionnaire[]
+  QuestionnaireOnDevices QuestionnaireOnDevices[]
 
   @@map("devices")
 }
 
 model Applier {
-  id       String  @id @default(uuid())
-  name     String  @unique
-  isActive Boolean
+  id                     String                   @id @default(uuid())
+  name                   String                   @unique
+  isActive               Boolean
+  questionnaires         Questionnaire[]
+  QuestionnaireOnApplier QuestionnaireOnApplier[]
 
   @@map("appliers")
 }
@@ -34,4 +38,44 @@ model User {
   isActive        Boolean
 
   @@map("users")
+}
+
+model Questionnaire {
+  id                     String                   @id @default(uuid())
+  name                   String                   @unique
+  image                  String
+  quantity               Int
+  endDate                String
+  link                   String
+  exceedsQuantity        Boolean
+  canBeOnline            Boolean
+  isActive               Boolean
+  devices                Device[]
+  appliers               Applier[]
+  QuestionnaireOnDevices QuestionnaireOnDevices[]
+  QuestionnaireOnApplier QuestionnaireOnApplier[]
+
+  @@map("questionnaires")
+}
+
+model QuestionnaireOnDevices {
+  device          Device        @relation(fields: [deviceId], references: [id])
+  deviceId        String
+  questionnaire   Questionnaire @relation(fields: [questionnaireId], references: [id])
+  questionnaireId String
+  assignedAt      DateTime      @default(now())
+  assignedBy      String
+
+  @@id([deviceId, questionnaireId])
+}
+
+model QuestionnaireOnApplier {
+  applier         Applier       @relation(fields: [applierId], references: [id])
+  applierId       String
+  questionnaire   Questionnaire @relation(fields: [questionnaireId], references: [id])
+  questionnaireId String
+  assignedAt      DateTime      @default(now())
+  assignedBy      String
+
+  @@id([applierId, questionnaireId])
 }
