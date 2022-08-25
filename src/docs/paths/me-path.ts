@@ -21,8 +21,8 @@ export const mePath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',

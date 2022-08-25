@@ -16,6 +16,16 @@ export const questionPath = {
         },
       },
     },
+    parameters: [
+      {
+        in: 'path',
+        name: 'id',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+    ],
     responses: {
       200: {
         description: 'Success',
@@ -30,8 +40,8 @@ export const questionPath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
@@ -40,7 +50,7 @@ export const questionPath = {
         $ref: '#/components/serverError',
       },
     },
-  }
+  },
 };
 
 export const questionDetailsPath = {
@@ -55,12 +65,20 @@ export const questionDetailsPath = {
     parameters: [
       {
         in: 'path',
+        name: 'idQuestionnaire',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+      {
+        in: 'path',
         name: 'id',
         required: true,
         schema: {
-          type: 'string'
-        }
-      }
+          type: 'string',
+        },
+      },
     ],
     responses: {
       200: {
@@ -71,7 +89,7 @@ export const questionDetailsPath = {
               type: 'array',
               items: {
                 $ref: '#/schemas/question',
-              }
+              },
             },
           },
         },
@@ -79,8 +97,8 @@ export const questionDetailsPath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
@@ -101,12 +119,20 @@ export const questionDetailsPath = {
     parameters: [
       {
         in: 'path',
+        name: 'idQuestionnaire',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+      {
+        in: 'path',
         name: 'id',
         required: true,
         schema: {
-          type: 'string'
-        }
-      }
+          type: 'string',
+        },
+      },
     ],
     requestBody: {
       content: {
@@ -126,7 +152,7 @@ export const questionDetailsPath = {
               type: 'array',
               items: {
                 $ref: '#/schemas/questionnaire',
-              }
+              },
             },
           },
         },
@@ -134,8 +160,8 @@ export const questionDetailsPath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
@@ -156,22 +182,30 @@ export const questionDetailsPath = {
     parameters: [
       {
         in: 'path',
+        name: 'idQuestionnaire',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+      {
+        in: 'path',
         name: 'id',
         required: true,
         schema: {
-          type: 'string'
-        }
-      }
+          type: 'string',
+        },
+      },
     ],
     responses: {
       204: {
-        description: 'Success'
+        description: 'Success',
       },
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',

@@ -7,14 +7,16 @@ export const questionnaireDataPath = {
     ],
     tags: ['Questionnaire'],
     summary: 'API to create a new questionnaire data',
-    parameters: [{
-      in: 'path',
-      name: 'idQuestionnaire',
-      required: true,
-      schema: {
-        type: 'string'
-      }
-    }],
+    parameters: [
+      {
+        in: 'path',
+        name: 'idQuestionnaire',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+    ],
     requestBody: {
       content: {
         'application/json': {
@@ -38,8 +40,8 @@ export const questionnaireDataPath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
@@ -57,14 +59,16 @@ export const questionnaireDataPath = {
     ],
     tags: ['Questionnaire'],
     summary: 'API to list all questionnaire data',
-    parameters: [{
-      in: 'path',
-      name: 'idQuestionnaire',
-      required: true,
-      schema: {
-        type: 'string'
-      }
-    }],
+    parameters: [
+      {
+        in: 'path',
+        name: 'idQuestionnaire',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+    ],
     responses: {
       200: {
         description: 'Success',
@@ -74,7 +78,7 @@ export const questionnaireDataPath = {
               type: 'array',
               items: {
                 $ref: '#/schemas/questionnaire',
-              }
+              },
             },
           },
         },
@@ -82,8 +86,8 @@ export const questionnaireDataPath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
@@ -92,7 +96,7 @@ export const questionnaireDataPath = {
         $ref: '#/components/serverError',
       },
     },
-  }
+  },
 };
 
 export const questionnaireDataDetailsPath = {
@@ -104,22 +108,24 @@ export const questionnaireDataDetailsPath = {
     ],
     tags: ['Questionnaire'],
     summary: 'API to update questionnaire data details',
-    parameters: [{
-      in: 'path',
-      name: 'idQuestionnaire',
-      required: true,
-      schema: {
-        type: 'string'
-      }
-    },
-    {
-      in: 'path',
-      name: 'id',
-      required: true,
-      schema: {
-        type: 'string'
-      }
-    }],
+    parameters: [
+      {
+        in: 'path',
+        name: 'idQuestionnaire',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+      {
+        in: 'path',
+        name: 'id',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+    ],
     requestBody: {
       content: {
         'application/json': {
@@ -143,8 +149,8 @@ export const questionnaireDataDetailsPath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
@@ -162,22 +168,24 @@ export const questionnaireDataDetailsPath = {
     ],
     tags: ['Questionnaire'],
     summary: 'API to get questionnaire data details',
-    parameters: [{
-      in: 'path',
-      name: 'idQuestionnaire',
-      required: true,
-      schema: {
-        type: 'string'
-      }
-    },
-    {
-      in: 'path',
-      name: 'id',
-      required: true,
-      schema: {
-        type: 'string'
-      }
-    }],
+    parameters: [
+      {
+        in: 'path',
+        name: 'idQuestionnaire',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+      {
+        in: 'path',
+        name: 'id',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+    ],
     responses: {
       200: {
         description: 'Success',
@@ -187,7 +195,7 @@ export const questionnaireDataDetailsPath = {
               type: 'array',
               items: {
                 $ref: '#/schemas/questionnaire',
-              }
+              },
             },
           },
         },
@@ -195,8 +203,8 @@ export const questionnaireDataDetailsPath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
@@ -205,5 +213,5 @@ export const questionnaireDataDetailsPath = {
         $ref: '#/components/serverError',
       },
     },
-  }
+  },
 };

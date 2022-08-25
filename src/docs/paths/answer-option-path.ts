@@ -16,6 +16,16 @@ export const answerOptionPath = {
         },
       },
     },
+    parameters: [
+      {
+        in: 'path',
+        name: 'idQuestion',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+    ],
     responses: {
       200: {
         description: 'Success',
@@ -30,8 +40,8 @@ export const answerOptionPath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
@@ -40,7 +50,7 @@ export const answerOptionPath = {
         $ref: '#/components/serverError',
       },
     },
-  }
+  },
 };
 
 export const answerOptionDetailsPath = {
@@ -55,12 +65,20 @@ export const answerOptionDetailsPath = {
     parameters: [
       {
         in: 'path',
+        name: 'idQuestion',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+      {
+        in: 'path',
         name: 'id',
         required: true,
         schema: {
-          type: 'string'
-        }
-      }
+          type: 'string',
+        },
+      },
     ],
     requestBody: {
       content: {
@@ -80,7 +98,7 @@ export const answerOptionDetailsPath = {
               type: 'array',
               items: {
                 $ref: '#/schemas/answerOption',
-              }
+              },
             },
           },
         },
@@ -88,8 +106,8 @@ export const answerOptionDetailsPath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
@@ -110,22 +128,30 @@ export const answerOptionDetailsPath = {
     parameters: [
       {
         in: 'path',
+        name: 'idQuestion',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+      {
+        in: 'path',
         name: 'id',
         required: true,
         schema: {
-          type: 'string'
-        }
-      }
+          type: 'string',
+        },
+      },
     ],
     responses: {
       204: {
-        description: 'Success'
+        description: 'Success',
       },
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',

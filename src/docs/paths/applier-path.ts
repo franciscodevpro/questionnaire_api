@@ -30,8 +30,8 @@ export const applierPath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
@@ -58,7 +58,7 @@ export const applierPath = {
               type: 'array',
               items: {
                 $ref: '#/schemas/applier',
-              }
+              },
             },
           },
         },
@@ -66,8 +66,8 @@ export const applierPath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
@@ -76,7 +76,7 @@ export const applierPath = {
         $ref: '#/components/serverError',
       },
     },
-  }
+  },
 };
 
 export const applierDetailsPath = {
@@ -94,9 +94,9 @@ export const applierDetailsPath = {
         name: 'id',
         required: true,
         schema: {
-          type: 'string'
-        }
-      }
+          type: 'string',
+        },
+      },
     ],
     requestBody: {
       content: {
@@ -116,7 +116,7 @@ export const applierDetailsPath = {
               type: 'array',
               items: {
                 $ref: '#/schemas/applier',
-              }
+              },
             },
           },
         },
@@ -124,8 +124,8 @@ export const applierDetailsPath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
@@ -149,19 +149,19 @@ export const applierDetailsPath = {
         name: 'id',
         required: true,
         schema: {
-          type: 'string'
-        }
-      }
+          type: 'string',
+        },
+      },
     ],
     responses: {
       204: {
-        description: 'Success'
+        description: 'Success',
       },
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',

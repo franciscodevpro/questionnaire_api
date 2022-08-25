@@ -30,8 +30,8 @@ export const devicePath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
@@ -58,7 +58,7 @@ export const devicePath = {
               type: 'array',
               items: {
                 $ref: '#/schemas/device',
-              }
+              },
             },
           },
         },
@@ -66,8 +66,8 @@ export const devicePath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
@@ -76,7 +76,7 @@ export const devicePath = {
         $ref: '#/components/serverError',
       },
     },
-  }
+  },
 };
 
 export const deviceDetailsPath = {
@@ -94,9 +94,9 @@ export const deviceDetailsPath = {
         name: 'id',
         required: true,
         schema: {
-          type: 'string'
-        }
-      }
+          type: 'string',
+        },
+      },
     ],
     requestBody: {
       content: {
@@ -116,7 +116,7 @@ export const deviceDetailsPath = {
               type: 'array',
               items: {
                 $ref: '#/schemas/device',
-              }
+              },
             },
           },
         },
@@ -124,8 +124,8 @@ export const deviceDetailsPath = {
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
@@ -149,19 +149,19 @@ export const deviceDetailsPath = {
         name: 'id',
         required: true,
         schema: {
-          type: 'string'
-        }
-      }
+          type: 'string',
+        },
+      },
     ],
     responses: {
       204: {
-        description: 'Success'
+        description: 'Success',
       },
       400: {
         $ref: '#/components/badRequest',
       },
-      403: {
-        $ref: '#/components/forbidden',
+      401: {
+        $ref: '#/components/unauthorized',
       },
       404: {
         $ref: '#/components/notFound',
