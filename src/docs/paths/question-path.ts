@@ -19,7 +19,7 @@ export const questionPath = {
     parameters: [
       {
         in: 'path',
-        name: 'id',
+        name: 'idQuestionnaire',
         required: true,
         schema: {
           type: 'string',
