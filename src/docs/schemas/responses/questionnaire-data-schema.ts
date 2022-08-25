@@ -19,8 +19,9 @@ export const questionnaireDataSchema = {
     coordinates: {
       type: 'array',
       items: {
-        type: 'string'
-      }
+        type: 'string',
+      },
+      length: 2,
     },
     duration: {
       type: 'integer',
@@ -29,8 +30,16 @@ export const questionnaireDataSchema = {
       type: 'array',
       items: {
         $ref: '#/schemas/answer',
-      }
-    }
+      },
+    },
   },
-  required: ['id', 'idApplier', 'idDevice', 'idQuestionnaire', 'audioPath', 'coordinates', 'duration'],
+  required: [
+    'id',
+    'idApplier',
+    'idDevice',
+    'idQuestionnaire',
+    'audioPath',
+    'coordinates',
+    'duration',
+  ],
 };

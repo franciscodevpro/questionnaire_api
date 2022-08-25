@@ -20,23 +20,30 @@ export const questionnaireParamsSchema = {
       type: 'boolean',
     },
     canBeOnline: {
-      type: 'string',
-    },
-    passwordConfirmation: {
-      type: 'string',
+      type: 'boolean',
     },
     idDevices: {
       type: 'array',
       items: {
-        type: 'integer'
-      }
+        type: 'string',
+      },
     },
     idAppliers: {
       type: 'array',
       items: {
-        type: 'integer'
-      }
-    }
+        type: 'string',
+      },
+    },
   },
-  required: ['name', 'image', 'quantity', 'endDate', 'link', 'exceedsQuantity', 'canBeOnline', 'passwordConfirmation', 'idDevices', 'idAppliers'],
+  required: [
+    'name',
+    'image',
+    'quantity',
+    'endDate',
+    'link',
+    'exceedsQuantity',
+    'canBeOnline',
+    'idDevices',
+    'idAppliers',
+  ],
 };

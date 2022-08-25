@@ -25,27 +25,35 @@ export const questionnaireSchema = {
     canBeOnline: {
       type: 'string',
     },
-    passwordConfirmation: {
-      type: 'string',
-    },
     idDevices: {
       type: 'array',
       items: {
-        type: 'string'
-      }
+        type: 'string',
+      },
     },
     idAppliers: {
       type: 'array',
       items: {
-        type: 'string'
-      }
+        type: 'string',
+      },
     },
     questions: {
       type: 'array',
       items: {
         $ref: '#/schemas/question',
-      }
-    }
+      },
+    },
   },
-  required: ['id', 'name', 'image', 'quantity', 'endDate', 'link', 'exceedsQuantity', 'canBeOnline', 'passwordConfirmation', 'idDevices', 'idAppliers'],
+  required: [
+    'id',
+    'name',
+    'image',
+    'quantity',
+    'endDate',
+    'link',
+    'exceedsQuantity',
+    'canBeOnline',
+    'idDevices',
+    'idAppliers',
+  ],
 };

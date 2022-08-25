@@ -13,12 +13,21 @@ export const questionnaireDataParamsSchema = {
     coordinates: {
       type: 'array',
       items: {
-        type: 'string'
-      }
+        type: 'string',
+      },
+      length: 2,
     },
     duration: {
       type: 'integer',
-    }
+    },
   },
-  required: ['idSession', 'idApplier', 'idDevice', 'idQuestionnaire', 'audioPath', 'coordinates', 'duration'],
+  required: [
+    'idSession',
+    'idApplier',
+    'idDevice',
+    'idQuestionnaire',
+    'audioPath',
+    'coordinates',
+    'duration',
+  ],
 };

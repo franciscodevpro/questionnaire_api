@@ -1,9 +1,6 @@
 export const answerOptionParamsSchema = {
   type: 'object',
   properties: {
-    id_question: {
-      type: 'string',
-    },
     title: {
       type: 'string',
     },
@@ -11,5 +8,5 @@ export const answerOptionParamsSchema = {
       type: 'boolean',
     },
   },
-  required: ['id_question', 'title', 'status'],
+  required: ['title', 'status'],
 };

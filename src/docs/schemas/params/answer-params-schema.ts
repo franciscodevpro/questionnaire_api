@@ -1,12 +1,6 @@
 export const answerParamsSchema = {
   type: 'object',
   properties: {
-    idSession: {
-      type: 'string',
-    },
-    idQuestionnaireData: {
-      type: 'string',
-    },
     idAnswerOption: {
       type: 'string',
     },
@@ -20,5 +14,14 @@ export const answerParamsSchema = {
       type: 'string',
     },
   },
-  required: ['idSession', 'idQuestion', 'idAnswerOption', 'idDevice', 'idApplier', 'value', 'duration', 'createdAt'],
+  required: [
+    'idSession',
+    'idQuestion',
+    'idAnswerOption',
+    'idDevice',
+    'idApplier',
+    'value',
+    'duration',
+    'createdAt',
+  ],
 };
