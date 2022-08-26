@@ -7,11 +7,11 @@ export const answerSchema = {
     idQuestionnaireData: {
       type: 'string',
     },
-    idQuestion: {
-      type: 'string',
+    question: {
+      $ref: '#/schemas/question',
     },
-    idAnswerOption: {
-      type: 'string',
+    answerOption: {
+      $ref: '#/schemas/answerOption',
     },
     value: {
       type: 'string',
@@ -23,5 +23,15 @@ export const answerSchema = {
       type: 'string',
     },
   },
-  required: ['id','idQuestionnaireData', 'idQuestion', 'idAnswerOption', 'idDevice', 'idApplier', 'value', 'duration', 'createdAt'],
+  required: [
+    'id',
+    'idQuestionnaireData',
+    'idQuestion',
+    'idAnswerOption',
+    'idDevice',
+    'idApplier',
+    'value',
+    'duration',
+    'createdAt',
+  ],
 };

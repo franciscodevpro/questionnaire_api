@@ -25,22 +25,16 @@ export const questionnaireSchema = {
     canBeOnline: {
       type: 'string',
     },
-    idDevices: {
+    devices: {
       type: 'array',
       items: {
-        type: 'string',
+        $ref: '#/schemas/device',
       },
     },
-    idAppliers: {
+    appliers: {
       type: 'array',
       items: {
-        type: 'string',
-      },
-    },
-    questions: {
-      type: 'array',
-      items: {
-        $ref: '#/schemas/question',
+        $ref: '#/schemas/applier',
       },
     },
   },

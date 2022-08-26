@@ -11,20 +11,30 @@ export const questionParamsSchema = {
       type: 'string',
     },
     minAnswers: {
-      type: 'string',
+      type: 'integer',
     },
     maxAnswers: {
-      type: 'string',
+      type: 'integer',
     },
     defaultValue: {
       type: 'string',
     },
     shuffle: {
-      type: 'string',
+      type: 'boolean',
     },
     prioritizeBySelection: {
-      type: 'string',
-    }
+      type: 'boolean',
+    },
   },
-  required: ['idQuestionnaire', 'title', 'variable', 'type', 'minAnswers', 'maxAnswers', 'defaultValue', 'shuffle', 'prioritizeBySelection'],
+  required: [
+    'idQuestionnaire',
+    'title',
+    'variable',
+    'type',
+    'minAnswers',
+    'maxAnswers',
+    'defaultValue',
+    'shuffle',
+    'prioritizeBySelection',
+  ],
 };

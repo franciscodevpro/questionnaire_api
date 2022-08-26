@@ -5,10 +5,10 @@ export const questionnaireDataSchema = {
       type: 'string',
     },
     applier: {
-      type: 'string',
+      $ref: '#/schemas/applier',
     },
     device: {
-      type: 'string',
+      $ref: '#/schemas/device',
     },
     idQuestionnaire: {
       type: 'string',
@@ -21,16 +21,11 @@ export const questionnaireDataSchema = {
       items: {
         type: 'string',
       },
-      length: 2,
+      minItems: 2,
+      maxItems: 2,
     },
     duration: {
       type: 'integer',
-    },
-    answers: {
-      type: 'array',
-      items: {
-        $ref: '#/schemas/answer',
-      },
     },
   },
   required: [

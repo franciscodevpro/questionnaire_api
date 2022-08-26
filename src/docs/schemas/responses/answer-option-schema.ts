@@ -4,7 +4,7 @@ export const answerOptionSchema = {
     id: {
       type: 'string',
     },
-    id_question: {
+    idQuestion: {
       type: 'string',
     },
     title: {
@@ -14,5 +14,5 @@ export const answerOptionSchema = {
       type: 'boolean',
     },
   },
-  required: ['id','id_question', 'title', 'status'],
+  required: ['id', 'idQuestion', 'title', 'status'],
 };

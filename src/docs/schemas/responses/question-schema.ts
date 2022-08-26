@@ -17,26 +17,37 @@ export const questionSchema = {
       type: 'string',
     },
     minAnswers: {
-      type: 'string',
+      type: 'integer',
     },
     maxAnswers: {
-      type: 'string',
+      type: 'integer',
     },
     defaultValue: {
       type: 'string',
     },
     shuffle: {
-      type: 'string',
+      type: 'boolean',
     },
     prioritizeBySelection: {
-      type: 'string',
+      type: 'boolean',
     },
-    answers: {
+    answerOptions: {
       type: 'array',
       items: {
         $ref: '#/schemas/answerOption',
-      }
-    }
+      },
+    },
   },
-  required: ['id', 'idQuestionnaire', 'title', 'variable', 'type', 'minAnswers', 'maxAnswers', 'defaultValue', 'shuffle', 'prioritizeBySelection'],
+  required: [
+    'id',
+    'idQuestionnaire',
+    'title',
+    'variable',
+    'type',
+    'minAnswers',
+    'maxAnswers',
+    'defaultValue',
+    'shuffle',
+    'prioritizeBySelection',
+  ],
 };

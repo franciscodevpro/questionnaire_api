@@ -15,7 +15,8 @@ export const questionnaireDataParamsSchema = {
       items: {
         type: 'string',
       },
-      length: 2,
+      minItems: 2,
+      maxItems: 2,
     },
     duration: {
       type: 'integer',
