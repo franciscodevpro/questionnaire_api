@@ -18,7 +18,7 @@ export const questionPath = {
     },
     parameters: [
       {
-        in: 'path',
+        in: 'query',
         name: 'idQuestionnaire',
         required: true,
         schema: {
@@ -51,9 +51,6 @@ export const questionPath = {
       },
     },
   },
-};
-
-export const questionDetailsPath = {
   get: {
     security: [
       {
@@ -64,16 +61,8 @@ export const questionDetailsPath = {
     summary: 'API to get an specific question',
     parameters: [
       {
-        in: 'path',
+        in: 'query',
         name: 'idQuestionnaire',
-        required: true,
-        schema: {
-          type: 'string',
-        },
-      },
-      {
-        in: 'path',
-        name: 'id',
         required: true,
         schema: {
           type: 'string',
@@ -108,6 +97,52 @@ export const questionDetailsPath = {
       },
     },
   },
+};
+
+export const questionDetailsPath = {
+  get: {
+    security: [
+      {
+        apiKeyAuth: [],
+      },
+    ],
+    tags: ['Question'],
+    summary: 'API to get an specific question',
+    parameters: [
+      {
+        in: 'path',
+        name: 'id',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+    ],
+    responses: {
+      200: {
+        description: 'Success',
+        content: {
+          'application/json': {
+            schema: {
+              $ref: '#/schemas/question',
+            },
+          },
+        },
+      },
+      400: {
+        $ref: '#/components/badRequest',
+      },
+      401: {
+        $ref: '#/components/unauthorized',
+      },
+      404: {
+        $ref: '#/components/notFound',
+      },
+      500: {
+        $ref: '#/components/serverError',
+      },
+    },
+  },
   put: {
     security: [
       {
@@ -117,14 +152,6 @@ export const questionDetailsPath = {
     tags: ['Question'],
     summary: 'API to update the question',
     parameters: [
-      {
-        in: 'path',
-        name: 'idQuestionnaire',
-        required: true,
-        schema: {
-          type: 'string',
-        },
-      },
       {
         in: 'path',
         name: 'id',

@@ -9,7 +9,7 @@ export const questionnaireDataPath = {
     summary: 'API to create a new questionnaire data',
     parameters: [
       {
-        in: 'path',
+        in: 'query',
         name: 'idQuestionnaire',
         required: true,
         schema: {
@@ -61,7 +61,7 @@ export const questionnaireDataPath = {
     summary: 'API to list all questionnaire data',
     parameters: [
       {
-        in: 'path',
+        in: 'query',
         name: 'idQuestionnaire',
         required: true,
         schema: {
@@ -77,7 +77,7 @@ export const questionnaireDataPath = {
             schema: {
               type: 'array',
               items: {
-                $ref: '#/schemas/questionnaire',
+                $ref: '#/schemas/questionnaireData',
               },
             },
           },
@@ -100,6 +100,52 @@ export const questionnaireDataPath = {
 };
 
 export const questionnaireDataDetailsPath = {
+  get: {
+    security: [
+      {
+        apiKeyAuth: [],
+      },
+    ],
+    tags: ['Questionnaire'],
+    summary: 'API to get questionnaire data details',
+    parameters: [
+      {
+        in: 'path',
+        name: 'id',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+    ],
+    responses: {
+      200: {
+        description: 'Success',
+        content: {
+          'application/json': {
+            schema: {
+              type: 'array',
+              items: {
+                $ref: '#/schemas/questionnaireData',
+              },
+            },
+          },
+        },
+      },
+      400: {
+        $ref: '#/components/badRequest',
+      },
+      401: {
+        $ref: '#/components/unauthorized',
+      },
+      404: {
+        $ref: '#/components/notFound',
+      },
+      500: {
+        $ref: '#/components/serverError',
+      },
+    },
+  },
   put: {
     security: [
       {
@@ -109,14 +155,6 @@ export const questionnaireDataDetailsPath = {
     tags: ['Questionnaire'],
     summary: 'API to update questionnaire data details',
     parameters: [
-      {
-        in: 'path',
-        name: 'idQuestionnaire',
-        required: true,
-        schema: {
-          type: 'string',
-        },
-      },
       {
         in: 'path',
         name: 'id',
@@ -160,7 +198,7 @@ export const questionnaireDataDetailsPath = {
       },
     },
   },
-  get: {
+  delete: {
     security: [
       {
         apiKeyAuth: [],
@@ -171,14 +209,6 @@ export const questionnaireDataDetailsPath = {
     parameters: [
       {
         in: 'path',
-        name: 'idQuestionnaire',
-        required: true,
-        schema: {
-          type: 'string',
-        },
-      },
-      {
-        in: 'path',
         name: 'id',
         required: true,
         schema: {
@@ -187,18 +217,8 @@ export const questionnaireDataDetailsPath = {
       },
     ],
     responses: {
-      200: {
+      204: {
         description: 'Success',
-        content: {
-          'application/json': {
-            schema: {
-              type: 'array',
-              items: {
-                $ref: '#/schemas/questionnaire',
-              },
-            },
-          },
-        },
       },
       400: {
         $ref: '#/components/badRequest',

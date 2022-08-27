@@ -18,7 +18,7 @@ export const answerOptionPath = {
     },
     parameters: [
       {
-        in: 'path',
+        in: 'query',
         name: 'idQuestion',
         required: true,
         schema: {
@@ -63,14 +63,6 @@ export const answerOptionDetailsPath = {
     tags: ['Answer Option'],
     summary: 'API to update an answer option',
     parameters: [
-      {
-        in: 'path',
-        name: 'idQuestion',
-        required: true,
-        schema: {
-          type: 'string',
-        },
-      },
       {
         in: 'path',
         name: 'id',
@@ -126,14 +118,6 @@ export const answerOptionDetailsPath = {
     tags: ['Answer Option'],
     summary: 'API to delete an answer option',
     parameters: [
-      {
-        in: 'path',
-        name: 'idQuestion',
-        required: true,
-        schema: {
-          type: 'string',
-        },
-      },
       {
         in: 'path',
         name: 'id',

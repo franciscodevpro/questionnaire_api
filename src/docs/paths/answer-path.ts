@@ -18,7 +18,7 @@ export const answerPath = {
     },
     parameters: [
       {
-        in: 'path',
+        in: 'query',
         name: 'idQuestionnaireData',
         required: true,
         schema: {
@@ -51,6 +51,52 @@ export const answerPath = {
       },
     },
   },
+  get: {
+    security: [
+      {
+        apiKeyAuth: [],
+      },
+    ],
+    tags: ['Answer'],
+    summary: 'API to get all answers of an applied questionnaire',
+    parameters: [
+      {
+        in: 'query',
+        name: 'idQuestionnaireData',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+    ],
+    responses: {
+      200: {
+        description: 'Success',
+        content: {
+          'application/json': {
+            schema: {
+              type: 'array',
+              items: {
+                $ref: '#/schemas/answer',
+              },
+            },
+          },
+        },
+      },
+      400: {
+        $ref: '#/components/badRequest',
+      },
+      401: {
+        $ref: '#/components/unauthorized',
+      },
+      404: {
+        $ref: '#/components/notFound',
+      },
+      500: {
+        $ref: '#/components/serverError',
+      },
+    },
+  },
 };
 
 export const answerDetailsPath = {
@@ -63,14 +109,6 @@ export const answerDetailsPath = {
     tags: ['Answer'],
     summary: 'API to update an answer of question',
     parameters: [
-      {
-        in: 'path',
-        name: 'idQuestionnaireData',
-        required: true,
-        schema: {
-          type: 'string',
-        },
-      },
       {
         in: 'path',
         name: 'id',
@@ -126,14 +164,6 @@ export const answerDetailsPath = {
     tags: ['Answer'],
     summary: 'API to delete an answer of question',
     parameters: [
-      {
-        in: 'path',
-        name: 'idQuestionnaireData',
-        required: true,
-        schema: {
-          type: 'string',
-        },
-      },
       {
         in: 'path',
         name: 'id',

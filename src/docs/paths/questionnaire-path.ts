@@ -181,4 +181,40 @@ export const questionnaireDetailsPath = {
       },
     },
   },
+  delete: {
+    security: [
+      {
+        apiKeyAuth: [],
+      },
+    ],
+    tags: ['Questionnaire'],
+    summary: 'API to delete the questionnaire data',
+    parameters: [
+      {
+        in: 'path',
+        name: 'id',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+    ],
+    responses: {
+      204: {
+        description: 'Success',
+      },
+      400: {
+        $ref: '#/components/badRequest',
+      },
+      401: {
+        $ref: '#/components/unauthorized',
+      },
+      404: {
+        $ref: '#/components/notFound',
+      },
+      500: {
+        $ref: '#/components/serverError',
+      },
+    },
+  },
 };
