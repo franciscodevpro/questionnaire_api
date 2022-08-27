@@ -58,7 +58,7 @@ describe('QuestionRepository', () => {
       await sut.findAll('any_idQuestionnaire');
       expect(findManySpy).toBeCalledWith({
         where: { idQuestionnaire: 'any_idQuestionnaire', isActive: true },
-        include: { AnswerOption: true },
+        include: { answerOptions: true },
       });
     });
   });
@@ -72,7 +72,7 @@ describe('QuestionRepository', () => {
       await sut.findOne('any_id');
       expect(findFirstOrThrowSpy).toBeCalledWith({
         where: { id: 'any_id' },
-        include: { AnswerOption: true },
+        include: { answerOptions: true },
       });
     });
   });

@@ -16,14 +16,14 @@ export class QuestionRepository {
   async findAll(idQuestionnaire: string) {
     return this.prisma.question.findMany({
       where: { idQuestionnaire, isActive: true },
-      include: { AnswerOption: true },
+      include: { answerOptions: true },
     });
   }
 
   async findOne(id: string) {
     return this.prisma.question.findFirstOrThrow({
       where: { id },
-      include: { AnswerOption: true },
+      include: { answerOptions: true },
     });
   }
 
