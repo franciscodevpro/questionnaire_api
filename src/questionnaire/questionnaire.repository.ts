@@ -34,20 +34,6 @@ export class QuestionnaireRepository {
         })),
       };
 
-    console.log({
-      name,
-      image,
-      quantity,
-      endDate,
-      link,
-      exceedsQuantity,
-      canBeOnline,
-      deviceIds,
-      applierIds,
-      appliers,
-      devices,
-    });
-
     await this.prisma.questionnaire.create({
       data: {
         name,

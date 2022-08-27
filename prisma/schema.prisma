@@ -94,7 +94,20 @@ model Question {
   prioritizeBySelection Boolean
   isActive              Boolean
 
-  questionnaire Questionnaire @relation(references: [id], fields: [idQuestionnaire])
+  questionnaire Questionnaire  @relation(references: [id], fields: [idQuestionnaire])
+  answerOptions AnswerOption[]
 
   @@map("questions")
+}
+
+model AnswerOption {
+  id         String  @id @default(uuid())
+  idQuestion String
+  title      String
+  status     Boolean
+  isActive   Boolean
+
+  question Question @relation(references: [id], fields: [idQuestion])
+
+  @@map("answer_options")
 }
