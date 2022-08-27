@@ -54,6 +54,7 @@ model Questionnaire {
   appliers               Applier[]
   QuestionnaireOnDevices QuestionnaireOnDevices[]
   QuestionnaireOnApplier QuestionnaireOnApplier[]
+  Question               Question[]
 
   @@map("questionnaires")
 }
@@ -78,4 +79,22 @@ model QuestionnaireOnApplier {
   assignedBy      String
 
   @@id([applierId, questionnaireId])
+}
+
+model Question {
+  id                    String  @id @default(uuid())
+  idQuestionnaire       String
+  title                 String
+  variable              String
+  type                  String
+  minAnswers            Int
+  maxAnswers            Int
+  defaultValue          String
+  shuffle               Boolean
+  prioritizeBySelection Boolean
+  isActive              Boolean
+
+  questionnaire Questionnaire @relation(references: [id], fields: [idQuestionnaire])
+
+  @@map("questions")
 }
