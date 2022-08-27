@@ -1,48 +1,36 @@
-import { QuestionRepository } from './question.repository';
+import { AnswerOptionRepository } from './answer-option.repository';
 import { PrismaService } from '../prisma.service';
 
 type SutType = {
-  sut: QuestionRepository;
+  sut: AnswerOptionRepository;
   prismaServiceStub: PrismaService;
 };
 
 const makeSut = (): SutType => {
   const prismaServiceStub = jest.mocked(new PrismaService());
-  const sut = new QuestionRepository(prismaServiceStub);
+  const sut = new AnswerOptionRepository(prismaServiceStub);
 
   return { sut, prismaServiceStub };
 };
 
-describe('QuestionRepository', () => {
+describe('AnswerOptionRepository', () => {
   describe('#create', () => {
     it('should call repository', async () => {
       const prismaServiceStub = jest.mocked(new PrismaService());
       const createSpy = jest
-        .spyOn(prismaServiceStub.question, 'create')
+        .spyOn(prismaServiceStub.answerOption, 'create')
         .mockImplementation();
-      const sut = new QuestionRepository(prismaServiceStub);
+      const sut = new AnswerOptionRepository(prismaServiceStub);
       await sut.create({
-        idQuestionnaire: 'any_idQuestionnaire',
+        idQuestion: 'any_idQuestion',
         title: 'any_title',
-        variable: 'any_variable',
-        type: 'any_type',
-        minAnswers: 1,
-        maxAnswers: 1,
-        defaultValue: 'any_defaultValue',
-        shuffle: true,
-        prioritizeBySelection: true,
+        status: true,
       });
       expect(createSpy).toBeCalledWith({
         data: {
-          idQuestionnaire: 'any_idQuestionnaire',
+          idQuestion: 'any_idQuestion',
           title: 'any_title',
-          variable: 'any_variable',
-          type: 'any_type',
-          minAnswers: 1,
-          maxAnswers: 1,
-          defaultValue: 'any_defaultValue',
-          shuffle: true,
-          prioritizeBySelection: true,
+          status: true,
           isActive: true,
         },
       });
@@ -53,12 +41,11 @@ describe('QuestionRepository', () => {
     it('should call repository', async () => {
       const { sut, prismaServiceStub } = makeSut();
       const findManySpy = jest
-        .spyOn(prismaServiceStub.question, 'findMany')
+        .spyOn(prismaServiceStub.answerOption, 'findMany')
         .mockImplementation();
-      await sut.findAll('any_idQuestionnaire');
+      await sut.findAll('any_idQuestion');
       expect(findManySpy).toBeCalledWith({
-        where: { idQuestionnaire: 'any_idQuestionnaire', isActive: true },
-        include: { AnswerOption: true },
+        where: { idQuestion: 'any_idQuestion', isActive: true },
       });
     });
   });
@@ -67,12 +54,11 @@ describe('QuestionRepository', () => {
     it('should call repository', async () => {
       const { sut, prismaServiceStub } = makeSut();
       const findFirstOrThrowSpy = jest
-        .spyOn(prismaServiceStub.question, 'findFirstOrThrow')
+        .spyOn(prismaServiceStub.answerOption, 'findFirstOrThrow')
         .mockImplementation();
       await sut.findOne('any_id');
       expect(findFirstOrThrowSpy).toBeCalledWith({
         where: { id: 'any_id' },
-        include: { AnswerOption: true },
       });
     });
   });
@@ -81,31 +67,19 @@ describe('QuestionRepository', () => {
     it('should call repository', async () => {
       const { sut, prismaServiceStub } = makeSut();
       const updateSpy = jest
-        .spyOn(prismaServiceStub.question, 'update')
+        .spyOn(prismaServiceStub.answerOption, 'update')
         .mockImplementation();
       await sut.update('any_id', {
-        idQuestionnaire: 'other_idQuestionnaire',
-        title: 'other_title',
-        variable: 'other_variable',
-        type: 'other_type',
-        minAnswers: 1,
-        maxAnswers: 1,
-        defaultValue: 'other_defaultValue',
-        shuffle: true,
-        prioritizeBySelection: true,
+        idQuestion: 'any_idQuestion',
+        title: 'any_title',
+        status: true,
       });
       expect(updateSpy).toBeCalledWith({
         where: { id: 'any_id' },
         data: {
-          idQuestionnaire: 'other_idQuestionnaire',
-          title: 'other_title',
-          variable: 'other_variable',
-          type: 'other_type',
-          minAnswers: 1,
-          maxAnswers: 1,
-          defaultValue: 'other_defaultValue',
-          shuffle: true,
-          prioritizeBySelection: true,
+          idQuestion: 'any_idQuestion',
+          title: 'any_title',
+          status: true,
         },
       });
     });
@@ -115,7 +89,7 @@ describe('QuestionRepository', () => {
     it('should call repository', async () => {
       const { sut, prismaServiceStub } = makeSut();
       const updateSpy = jest
-        .spyOn(prismaServiceStub.question, 'update')
+        .spyOn(prismaServiceStub.answerOption, 'update')
         .mockImplementation();
       await sut.remove('any_id');
       expect(updateSpy).toBeCalledWith({
