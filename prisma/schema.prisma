@@ -14,6 +14,7 @@ model Device {
   isActive               Boolean
   questionnaires         Questionnaire[]
   QuestionnaireOnDevices QuestionnaireOnDevices[]
+  QuestionnaireData      QuestionnaireData[]
 
   @@map("devices")
 }
@@ -24,6 +25,7 @@ model Applier {
   isActive               Boolean
   questionnaires         Questionnaire[]
   QuestionnaireOnApplier QuestionnaireOnApplier[]
+  QuestionnaireData      QuestionnaireData[]
 
   @@map("appliers")
 }
@@ -55,6 +57,7 @@ model Questionnaire {
   QuestionnaireOnDevices QuestionnaireOnDevices[]
   QuestionnaireOnApplier QuestionnaireOnApplier[]
   Question               Question[]
+  QuestionnaireData      QuestionnaireData[]
 
   @@map("questionnaires")
 }
@@ -110,4 +113,22 @@ model AnswerOption {
   question Question @relation(references: [id], fields: [idQuestion])
 
   @@map("answer_options")
+}
+
+model QuestionnaireData {
+  id              String  @id @default(uuid())
+  idQuestionnaire String
+  idApplier       String
+  idDevice        String
+  audioPath       String
+  lat             String
+  lon             String
+  duration        Int
+  isActive        Boolean
+
+  questionnaire Questionnaire @relation(references: [id], fields: [idQuestionnaire])
+  applier       Applier       @relation(references: [id], fields: [idApplier])
+  device        Device        @relation(references: [id], fields: [idDevice])
+
+  @@map("questionnaire_datas")
 }

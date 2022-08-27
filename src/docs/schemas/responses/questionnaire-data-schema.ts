@@ -16,13 +16,11 @@ export const questionnaireDataSchema = {
     audioPath: {
       type: 'string',
     },
-    coordinates: {
-      type: 'array',
-      items: {
-        type: 'string',
-      },
-      minItems: 2,
-      maxItems: 2,
+    lat: {
+      type: 'string',
+    },
+    lon: {
+      type: 'string',
     },
     duration: {
       type: 'integer',
