@@ -99,6 +99,7 @@ model Question {
 
   questionnaire Questionnaire  @relation(references: [id], fields: [idQuestionnaire])
   answerOptions AnswerOption[]
+  Answer        Answer[]
 
   @@map("questions")
 }
@@ -111,6 +112,7 @@ model AnswerOption {
   isActive   Boolean
 
   question Question @relation(references: [id], fields: [idQuestion])
+  Answer   Answer[]
 
   @@map("answer_options")
 }
@@ -129,6 +131,24 @@ model QuestionnaireData {
   questionnaire Questionnaire @relation(references: [id], fields: [idQuestionnaire])
   applier       Applier       @relation(references: [id], fields: [idApplier])
   device        Device        @relation(references: [id], fields: [idDevice])
+  Answer        Answer[]
 
   @@map("questionnaire_datas")
+}
+
+model Answer {
+  id                  String  @id @default(uuid())
+  idQuestionnaireData String
+  idQuestion          String
+  idAnswerOption      String
+  value               String
+  duration            Int
+  createdAt           String
+  isActive            Boolean
+
+  questionnaireData QuestionnaireData @relation(references: [id], fields: [idQuestionnaireData])
+  question          Question          @relation(references: [id], fields: [idQuestion])
+  answerOption      AnswerOption      @relation(references: [id], fields: [idAnswerOption])
+
+  @@map("answers")
 }

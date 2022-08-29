@@ -1,6 +1,9 @@
 export const answerParamsSchema = {
   type: 'object',
   properties: {
+    idQuestion: {
+      type: 'string',
+    },
     idAnswerOption: {
       type: 'string',
     },

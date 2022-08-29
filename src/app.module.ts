@@ -6,8 +6,9 @@ import { QuestionnaireModule } from './questionnaire/questionnaire.module';
 import { QuestionModule } from './question/question.module';
 import { AnswerOptionModule } from './answer-option/answer-option.module';
 import { QuestionnaireDataModule } from './questionnaire-data/questionnaire-data.module';
+import { AnswerModule } from './answer/answer.module';
 
 @Module({
-  imports: [DeviceModule, ApplierModule, UserModule, QuestionnaireModule, QuestionModule, AnswerOptionModule, QuestionnaireDataModule],
+  imports: [DeviceModule, ApplierModule, UserModule, QuestionnaireModule, QuestionModule, AnswerOptionModule, QuestionnaireDataModule, AnswerModule],
 })
 export class AppModule {}
