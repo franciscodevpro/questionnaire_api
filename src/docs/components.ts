@@ -1,4 +1,4 @@
-import { apiKeyAuthSchema } from './schemas/';
+import { apiKeyAuthSchema, basicAuthSchema } from './schemas/';
 import {
   badRequest,
   serverError,
@@ -10,6 +10,7 @@ import {
 export default {
   securitySchemes: {
     apiKeyAuth: apiKeyAuthSchema,
+    basicAuth: basicAuthSchema,
   },
   badRequest,
   serverError,

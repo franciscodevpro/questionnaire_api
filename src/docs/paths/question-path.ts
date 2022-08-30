@@ -56,6 +56,9 @@ export const questionPath = {
       {
         apiKeyAuth: [],
       },
+      {
+        basicAuth: [],
+      },
     ],
     tags: ['Question'],
     summary: 'API to get an specific question',
@@ -104,6 +107,9 @@ export const questionDetailsPath = {
     security: [
       {
         apiKeyAuth: [],
+      },
+      {
+        basicAuth: [],
       },
     ],
     tags: ['Question'],

@@ -18,3 +18,4 @@ export * from './responses/account-schema';
 export * from './responses/access-token-schema';
 export * from './error-schema';
 export * from './api-key-auth-schema';
+export * from './basic-auth-schema';

@@ -46,6 +46,9 @@ export const questionnairePath = {
       {
         apiKeyAuth: [],
       },
+      {
+        basicAuth: [],
+      },
     ],
     tags: ['Questionnaire'],
     summary: 'API to list all questionnaires',
@@ -84,6 +87,9 @@ export const questionnaireDetailsPath = {
     security: [
       {
         apiKeyAuth: [],
+      },
+      {
+        basicAuth: [],
       },
     ],
     tags: ['Questionnaire'],

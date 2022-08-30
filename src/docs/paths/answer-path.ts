@@ -4,6 +4,9 @@ export const answerPath = {
       {
         apiKeyAuth: [],
       },
+      {
+        basicAuth: [],
+      },
     ],
     tags: ['Answer'],
     summary: 'API to create a answer to a question',
@@ -56,6 +59,9 @@ export const answerPath = {
       {
         apiKeyAuth: [],
       },
+      {
+        basicAuth: [],
+      },
     ],
     tags: ['Answer'],
     summary: 'API to get all answers of an applied questionnaire',
@@ -104,6 +110,9 @@ export const answerDetailsPath = {
     security: [
       {
         apiKeyAuth: [],
+      },
+      {
+        basicAuth: [],
       },
     ],
     tags: ['Answer'],
@@ -159,6 +168,9 @@ export const answerDetailsPath = {
     security: [
       {
         apiKeyAuth: [],
+      },
+      {
+        basicAuth: [],
       },
     ],
     tags: ['Answer'],
