@@ -61,14 +61,14 @@ describe('AnswerController', () => {
         idAnswerOption: 'any_idAnswerOption',
         value: 'any_value',
         duration: 1,
-        createdA: 'any_createdA',
+        createdAt: 'any_createdAt',
       });
       expect(createSpy).toBeCalledWith('any_idQuestionnaireData', {
         idQuestion: 'any_idQuestion',
         idAnswerOption: 'any_idAnswerOption',
         value: 'any_value',
         duration: 1,
-        createdA: 'any_createdA',
+        createdAt: 'any_createdAt',
       });
     });
   });
@@ -100,14 +100,14 @@ describe('AnswerController', () => {
         idAnswerOption: 'any_idAnswerOption',
         value: 'any_value',
         duration: 1,
-        createdA: 'any_createdA',
+        createdAt: 'any_createdAt',
       });
       expect(updateSpy).toBeCalledWith('any_id', {
         idQuestion: 'any_idQuestion',
         idAnswerOption: 'any_idAnswerOption',
         value: 'any_value',
         duration: 1,
-        createdA: 'any_createdA',
+        createdAt: 'any_createdAt',
       });
     });
   });
