@@ -19,7 +19,7 @@ export class LoginService {
     const user = await this.userRepository.findOneByLogin(login);
     if (!user) return null;
 
-    if (!this.passwordUtil.comparePassword(password, user.password))
+    if (!(await this.passwordUtil.comparePassword(password, user.password)))
       return null;
 
     const { token, tokenExpiration } = this.tokenUtil.generateToken();
@@ -34,7 +34,7 @@ export class LoginService {
   async signup(signupDto: SignUpDto): Promise<AccessToken> {
     const { token, tokenExpiration } = this.tokenUtil.generateToken();
     const { login, password, name } = signupDto;
-    const encryptedPassword = this.passwordUtil.encryptPassword(password);
+    const encryptedPassword = await this.passwordUtil.hashPassword(password);
     await this.userRepository.create({
       login,
       name,
