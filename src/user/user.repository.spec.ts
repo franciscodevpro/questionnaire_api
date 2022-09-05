@@ -72,6 +72,19 @@ describe('UserRepository', () => {
     });
   });
 
+  describe('#findOneByToken', () => {
+    it('should call repository', async () => {
+      const { sut, prismaServiceStub } = makeSut();
+      const findFirstOrThrowSpy = jest
+        .spyOn(prismaServiceStub.user, 'findFirstOrThrow')
+        .mockImplementation();
+      await sut.findOneByToken('any_token');
+      expect(findFirstOrThrowSpy).toBeCalledWith({
+        where: { token: 'any_token' },
+      });
+    });
+  });
+
   describe('#update', () => {
     it('should call repository', async () => {
       const { sut, prismaServiceStub } = makeSut();

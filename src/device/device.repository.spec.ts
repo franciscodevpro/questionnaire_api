@@ -54,6 +54,17 @@ describe('DeviceRepository', () => {
     });
   });
 
+  describe('#findOneByPin', () => {
+    it('should call repository', async () => {
+      const { sut, prismaServiceStub } = makeSut();
+      const findFirstOrThrowSpy = jest
+        .spyOn(prismaServiceStub.device, 'findFirstOrThrow')
+        .mockImplementation();
+      await sut.findOneByPin('any_pin');
+      expect(findFirstOrThrowSpy).toBeCalledWith({ where: { pin: 'any_pin' } });
+    });
+  });
+
   describe('#update', () => {
     it('should call repository', async () => {
       const { sut, prismaServiceStub } = makeSut();
