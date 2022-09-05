@@ -73,12 +73,15 @@ const makeSut = (): SutType => {
     }
   }
   class PasswordUtilStub {
-    public comparePassword(plainText: string, encrypted: string) {
-      return true;
+    public comparePassword(
+      plainText: string,
+      hashed: string,
+    ): Promise<boolean> {
+      return Promise.resolve(true);
     }
 
-    public encryptPassword(plainText: string): string {
-      return 'any_encryptPassword';
+    public hashPassword(plainText: string): Promise<string> {
+      return Promise.resolve('any_hashPassword');
     }
   }
   const userRepositoryStub = new UserRepositoryStub() as any;
@@ -148,7 +151,7 @@ describe('LoginService', () => {
       const { sut, passwordUtilStub } = makeSut();
       jest
         .spyOn(passwordUtilStub, 'comparePassword')
-        .mockReturnValueOnce(false);
+        .mockReturnValueOnce(Promise.resolve(false));
       const loginData = await sut.login({
         login: 'any_login',
         password: 'any_password',

@@ -1,4 +1,5 @@
 import { PasswordUtil } from './password.util';
+import * as bcrypt from 'bcrypt';
 
 type SutType = {
   sut: PasswordUtil;
@@ -19,11 +20,12 @@ describe('PasswordUtil', () => {
     });
   });
 
-  describe('encryptPassword', () => {
-    it('Should return an encrypted password', () => {
+  describe('hashPassword', () => {
+    it('Should return an hashed password', async () => {
+      jest.spyOn(bcrypt, 'hash' as any).mockResolvedValue('any_hashedPassword');
       const { sut } = makeSut();
-      const result = sut.encryptPassword('any_password');
-      expect(result).toBe('any_password');
+      const result = await sut.hashPassword('any_password');
+      expect(result).toBe('any_hashedPassword');
     });
   });
 });
