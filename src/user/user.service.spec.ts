@@ -42,6 +42,30 @@ const makeSut = (): SutType => {
       });
     }
 
+    async findOneByLogin(login: string) {
+      return Promise.resolve({
+        id: 'any_id',
+        name: 'any_name',
+        password: 'any_password',
+        login: 'any_login',
+        token: 'any_token',
+        tokenExpiration: 1,
+        isActive: true,
+      });
+    }
+
+    async findOneByToken(token: string) {
+      return Promise.resolve({
+        id: 'any_id',
+        name: 'any_name',
+        password: 'any_password',
+        login: 'any_login',
+        token: 'any_token',
+        tokenExpiration: 1,
+        isActive: true,
+      });
+    }
+
     async update(id: string, data: UpdateUserDto) {
       Promise.resolve();
     }
@@ -50,7 +74,7 @@ const makeSut = (): SutType => {
       Promise.resolve();
     }
   }
-  const userRepositoryStub = new UserRepositoryStub() as UserRepository;
+  const userRepositoryStub = new UserRepositoryStub() as any;
   const sut = new UserService(userRepositoryStub);
 
   return { sut, userRepositoryStub };

@@ -51,7 +51,7 @@ const makeSut = (): SutType => {
       Promise.resolve();
     }
   }
-  const userServiceStub = new UserServiceStub() as UserService;
+  const userServiceStub = new UserServiceStub() as any;
   const sut = new UserController(userServiceStub);
 
   return { sut, userServiceStub };
