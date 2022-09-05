@@ -28,7 +28,12 @@ export class BearerAuthorizationMiddleware implements NestMiddleware {
 
     if (user.tokenExpiration <= Date.now()) return next();
 
-    req['user'] = user;
+    req['user'] = {
+      ...user,
+      token: undefined,
+      tokenExpiration: undefined,
+      password: undefined,
+    };
     req['hasBeenAuth'] = true;
     req['authError'] = null;
 

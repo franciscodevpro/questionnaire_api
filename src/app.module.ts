@@ -22,6 +22,7 @@ import { BasicAuthorizationMiddleware } from './middlewares/basic-authorization-
 import { ApplierRepository } from './applier/applier.repository';
 import { DeviceRepository } from './device/device.repository';
 import { CheckAuthMiddleware } from './middlewares/check-auth-error-middleware';
+import { MeController } from './user/me.controller';
 
 @Module({
   imports: [
@@ -58,6 +59,7 @@ export class AppModule {
         AnswerController,
         ApplierController,
         DeviceController,
+        MeController,
       );
   }
 }
