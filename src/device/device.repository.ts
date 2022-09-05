@@ -19,6 +19,10 @@ export class DeviceRepository {
     return this.prisma.device.findFirstOrThrow({ where: { id } });
   }
 
+  async findOneByPin(pin: string) {
+    return this.prisma.device.findFirstOrThrow({ where: { pin } });
+  }
+
   async update(id: string, data: UpdateDeviceDto) {
     await this.prisma.device.update({ where: { id }, data });
   }

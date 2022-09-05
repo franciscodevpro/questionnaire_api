@@ -36,7 +36,7 @@ model User {
   password        String
   name            String
   token           String
-  tokenExpiration Int
+  tokenExpiration BigInt
   isActive        Boolean
 
   @@map("users")

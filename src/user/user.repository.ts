@@ -23,6 +23,10 @@ export class UserRepository {
     return this.prisma.user.findFirstOrThrow({ where: { login } });
   }
 
+  async findOneByToken(token: string) {
+    return this.prisma.user.findFirstOrThrow({ where: { token } });
+  }
+
   async update(id: string, data: UpdateUserDto) {
     await this.prisma.user.update({ where: { id }, data });
   }
