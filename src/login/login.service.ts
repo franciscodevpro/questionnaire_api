@@ -33,10 +33,11 @@ export class LoginService {
 
   async signup(signupDto: SignUpDto): Promise<AccessToken> {
     const { token, tokenExpiration } = this.tokenUtil.generateToken();
-    const { password } = signupDto;
+    const { login, password, name } = signupDto;
     const encryptedPassword = this.passwordUtil.encryptPassword(password);
-    this.userRepository.create({
-      ...signupDto,
+    await this.userRepository.create({
+      login,
+      name,
       token,
       tokenExpiration,
       password: encryptedPassword,

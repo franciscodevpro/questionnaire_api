@@ -81,7 +81,7 @@ const makeSut = (): SutType => {
       return 'any_encryptPassword';
     }
   }
-  const userRepositoryStub = new UserRepositoryStub() as UserRepository;
+  const userRepositoryStub = new UserRepositoryStub() as any;
   const tokenUtilStub = new TokenUtilStub();
   const passwordUtilStub = new PasswordUtilStub();
   const sut = new LoginService(
