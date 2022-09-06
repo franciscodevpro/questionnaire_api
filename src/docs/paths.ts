@@ -16,6 +16,7 @@ import {
   applierDetailsPath,
   devicePath,
   deviceDetailsPath,
+  audioUploadPath,
 } from './paths/';
 export default {
   '/login': loginPath,
@@ -35,4 +36,5 @@ export default {
   '/appliers/{id}': applierDetailsPath,
   '/devices': devicePath,
   '/devices/{id}': deviceDetailsPath,
+  '/upload/audio': audioUploadPath,
 };

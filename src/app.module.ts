@@ -23,9 +23,15 @@ import { ApplierRepository } from './applier/applier.repository';
 import { DeviceRepository } from './device/device.repository';
 import { CheckAuthMiddleware } from './middlewares/check-auth-error-middleware';
 import { MeController } from './user/me.controller';
+import { AudioUploadController } from './audio-upload/audio-upload.controller';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'public'),
+    }),
     DeviceModule,
     ApplierModule,
     UserModule,
@@ -42,6 +48,7 @@ import { MeController } from './user/me.controller';
     ApplierRepository,
     DeviceRepository,
   ],
+  controllers: [AudioUploadController],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
