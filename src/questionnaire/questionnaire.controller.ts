@@ -6,6 +6,8 @@ import {
   Patch,
   Param,
   Delete,
+  Headers,
+  Request,
 } from '@nestjs/common';
 import { QuestionnaireService } from './questionnaire.service';
 import { CreateQuestionnaireDto } from './dto/create-questionnaire.dto';
@@ -21,8 +23,9 @@ export class QuestionnaireController {
   }
 
   @Get()
-  findAll() {
-    return this.questionnaireService.findAll();
+  findAll(@Request() request: Request) {
+    const { applier } = request as any;
+    return this.questionnaireService.findAll(applier?.id);
   }
 
   @Get(':id')

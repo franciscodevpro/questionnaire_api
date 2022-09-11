@@ -4,6 +4,9 @@ export const questionnaireDataPath = {
       {
         apiKeyAuth: [],
       },
+      {
+        basicAuth: [],
+      },
     ],
     tags: ['Questionnaire'],
     summary: 'API to create a new questionnaire data',
@@ -156,6 +159,9 @@ export const questionnaireDataDetailsPath = {
     security: [
       {
         apiKeyAuth: [],
+      },
+      {
+        basicAuth: [],
       },
     ],
     tags: ['Questionnaire'],

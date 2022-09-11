@@ -7,6 +7,7 @@ import {
   Param,
   Delete,
   Query,
+  Request,
 } from '@nestjs/common';
 import { QuestionnaireDataService } from './questionnaire-data.service';
 import { CreateQuestionnaireDataDto } from './dto/create-questionnaire-data.dto';
@@ -20,12 +21,17 @@ export class QuestionnaireDataController {
 
   @Post()
   create(
+    @Request() request: Request,
     @Query('idQuestionnaire') idQuestionnaire: string,
     @Body() createQuestionnaireDataDto: CreateQuestionnaireDataDto,
   ) {
+    const { applier, device } = request as any;
     return this.questionnaireDataService.create(
       idQuestionnaire,
-      createQuestionnaireDataDto,
+      {...createQuestionnaireDataDto, 
+        idDevice: device.id as string,
+        idApplier: applier.id as string,
+      },
     );
   }
 

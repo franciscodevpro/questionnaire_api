@@ -42,11 +42,7 @@ export const devicePath = {
     },
   },
   get: {
-    security: [
-      {
-        apiKeyAuth: [],
-      },
-    ],
+    security: [],
     tags: ['Device'],
     summary: 'API to list all questionnaire devices',
     responses: {

@@ -50,9 +50,9 @@ export class QuestionnaireRepository {
     });
   }
 
-  async findAll() {
+  async findAll(applierId?: string) {
     return this.prisma.questionnaire.findMany({
-      where: { isActive: true },
+      where: { isActive: true, ...(!!applierId) && { appliers: { some: {id: applierId} } }  },
       include: { appliers: true, devices: true },
     });
   }

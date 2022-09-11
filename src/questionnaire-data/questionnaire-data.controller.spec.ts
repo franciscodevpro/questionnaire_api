@@ -67,14 +67,13 @@ describe('QuestionnaireDataController', () => {
     it('should call repository', async () => {
       const { sut, questionnaireDataServiceStub } = makeSut();
       const createSpy = jest.spyOn(questionnaireDataServiceStub, 'create');
-      await sut.create('any_idQuestionnaire', {
-        idApplier: 'any_idApplier',
-        idDevice: 'any_idDevice',
+      await sut.create({applier: {id: 'any_idApplier'},
+      device: {id: 'any_idDevice'}} as any, 'any_idQuestionnaire', {
         audioPath: 'any_audioPath',
         lat: 'any_lat',
         lon: 'any_lon',
         duration: 1,
-      });
+      } as any);
       expect(createSpy).toBeCalledWith('any_idQuestionnaire', {
         idApplier: 'any_idApplier',
         idDevice: 'any_idDevice',

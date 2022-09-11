@@ -1,4 +1,4 @@
-import { MiddlewareConsumer, Module } from '@nestjs/common';
+import { MiddlewareConsumer, Module, RequestMethod } from '@nestjs/common';
 import { DeviceModule } from './device/device.module';
 import { ApplierModule } from './applier/applier.module';
 import { UserModule } from './user/user.module';
@@ -55,9 +55,17 @@ export class AppModule {
     consumer
       .apply(
         BasicAuthorizationMiddleware,
+      )
+      .forRoutes(
+        {path: 'api/questionnaires*', method: RequestMethod.GET},
+        QuestionnaireDataController,
+        {path: 'api/questions*', method: RequestMethod.GET},
+        AnswerController,
+      )
+      .apply(
         BearerAuthorizationMiddleware,
         CheckAuthMiddleware,
-      )
+      ).exclude({ path: 'api/appliers', method: RequestMethod.GET },{ path: 'api/devices', method: RequestMethod.GET })
       .forRoutes(
         QuestionnaireController,
         QuestionnaireDataController,
@@ -68,5 +76,22 @@ export class AppModule {
         DeviceController,
         MeController,
       );
+
+      
+    /* consumer
+    .apply(
+      BearerAuthorizationMiddleware,
+      CheckAuthMiddleware,
+    )
+    .forRoutes(
+      QuestionnaireController,
+      QuestionnaireDataController,
+      QuestionController,
+      AnswerOptionController,
+      AnswerController,
+      ApplierController,
+      DeviceController,
+      MeController,
+    ); */
   }
 }

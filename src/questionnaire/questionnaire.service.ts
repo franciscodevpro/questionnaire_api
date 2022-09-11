@@ -13,8 +13,8 @@ export class QuestionnaireService {
     await this.questionnaireRepository.create(createQuestionnaireDto);
   }
 
-  async findAll() {
-    return this.questionnaireRepository.findAll();
+  async findAll(applierId?: string) {
+    return this.questionnaireRepository.findAll(applierId);
   }
 
   async findOne(id: string) {

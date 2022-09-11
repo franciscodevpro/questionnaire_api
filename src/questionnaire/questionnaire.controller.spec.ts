@@ -94,7 +94,13 @@ describe('QuestionnaireController', () => {
     it('should call repository', async () => {
       const { sut, questionnaireServiceStub } = makeSut();
       const findAllSpy = jest.spyOn(questionnaireServiceStub, 'findAll');
-      await sut.findAll();
+      await sut.findAll({ applier: null } as any);
+      expect(findAllSpy).toBeCalledTimes(1);
+    });
+    it('should filter by applierId', async () => {
+      const { sut, questionnaireServiceStub } = makeSut();
+      const findAllSpy = jest.spyOn(questionnaireServiceStub, 'findAll');
+      await sut.findAll({ applier: {id: 'any_id'} } as any);
       expect(findAllSpy).toBeCalledTimes(1);
     });
   });

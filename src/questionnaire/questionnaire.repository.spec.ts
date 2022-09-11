@@ -65,6 +65,17 @@ describe('QuestionnaireRepository', () => {
         include: { appliers: true, devices: true },
       });
     });
+    it('should filter by applierId', async () => {
+      const { sut, prismaServiceStub } = makeSut();
+      const findManySpy = jest
+        .spyOn(prismaServiceStub.questionnaire, 'findMany')
+        .mockImplementation();
+      await sut.findAll('any_applierId');
+      expect(findManySpy).toBeCalledWith({
+        where: { isActive: true, appliers: { some: {id: 'any_applierId'} } },
+        include: { appliers: true, devices: true },
+      });
+    });
   });
 
   describe('#findOne', () => {

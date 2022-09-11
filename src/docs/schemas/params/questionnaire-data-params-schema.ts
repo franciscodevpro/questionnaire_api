@@ -1,12 +1,6 @@
 export const questionnaireDataParamsSchema = {
   type: 'object',
   properties: {
-    idApplier: {
-      type: 'string',
-    },
-    idDevice: {
-      type: 'string',
-    },
     audioPath: {
       type: 'string',
     },

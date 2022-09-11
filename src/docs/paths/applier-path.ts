@@ -42,11 +42,7 @@ export const applierPath = {
     },
   },
   get: {
-    security: [
-      {
-        apiKeyAuth: [],
-      },
-    ],
+    security: [],
     tags: ['Applier'],
     summary: 'API to list all questionnaire appliers',
     responses: {

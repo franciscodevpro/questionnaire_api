@@ -4,7 +4,7 @@ import { serve, setup } from 'swagger-ui-express';
 import swaggerConfig from './docs';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { cors: true });
   app.use('/api-docs', serve, setup(swaggerConfig));
   await app.listen(3000);
 }
