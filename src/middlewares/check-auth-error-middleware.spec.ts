@@ -7,12 +7,16 @@ const makeReqResNext = (): [Request, Response, NextFunction] => {
     headers: { authorization: 'any_bearer any_token' },
   } as any;
   const res = {
-    json: (value: any) => ({
-      status: (status: number) => ({ status, value }),
-    }),
-  } as any;
+    statusCode: 0,
+    status: (status: number) => {
+      return this;
+    },
+    json: (value: any) => {
+      return { value };
+    },
+  };
   const next = () => 'any_next';
-  return [req, res, next];
+  return [req, res as any, next];
 };
 
 type SutTypes = {
@@ -33,7 +37,7 @@ describe('CheckAuthMiddleware', () => {
       req['authError'] = true;
       const result = await sut.use(req, res, next);
 
-      expect(result).toEqual({ status: 401, value: true });
+      expect(result).toEqual({ value: true });
     });
 
     it('Should return next on success', async () => {

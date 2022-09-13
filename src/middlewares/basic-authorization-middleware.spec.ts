@@ -101,5 +101,15 @@ describe('BasicAuthorizationMiddleware', () => {
 
       expect(result).toEqual('any_next');
     });
+
+    it('Should return next if throws', async () => {
+      const { sut, applierRepositoryStub } = makeSut();
+      jest
+        .spyOn(applierRepositoryStub, 'findOne')
+        .mockRejectedValue(new Error());
+      const result = await sut.use(...makeReqResNext());
+
+      expect(result).toEqual('any_next');
+    });
   });
 });

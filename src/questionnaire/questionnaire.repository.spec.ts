@@ -72,7 +72,7 @@ describe('QuestionnaireRepository', () => {
         .mockImplementation();
       await sut.findAll('any_applierId');
       expect(findManySpy).toBeCalledWith({
-        where: { isActive: true, appliers: { some: {id: 'any_applierId'} } },
+        where: { isActive: true, appliers: { some: { id: 'any_applierId' } } },
         include: { appliers: true, devices: true },
       });
     });
@@ -104,6 +104,8 @@ describe('QuestionnaireRepository', () => {
         quantity: 1,
         endDate: 'other_endDate',
         link: 'other_link',
+        deviceIds: ['any_deviceId'],
+        applierIds: ['any_applierId'],
       });
       expect(updateSpy).toBeCalledWith({
         where: { id: 'any_id' },
@@ -113,6 +115,12 @@ describe('QuestionnaireRepository', () => {
           quantity: 1,
           endDate: 'other_endDate',
           link: 'other_link',
+          devices: {
+            connect: [{ id: 'any_deviceId' }],
+          },
+          appliers: {
+            connect: [{ id: 'any_applierId' }],
+          },
         },
       });
     });
