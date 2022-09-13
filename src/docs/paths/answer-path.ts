@@ -106,7 +106,7 @@ export const answerPath = {
 };
 
 export const answerDetailsPath = {
-  put: {
+  patch: {
     security: [
       {
         apiKeyAuth: [],

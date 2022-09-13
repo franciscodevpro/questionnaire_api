@@ -149,7 +149,7 @@ export const questionDetailsPath = {
       },
     },
   },
-  put: {
+  patch: {
     security: [
       {
         apiKeyAuth: [],

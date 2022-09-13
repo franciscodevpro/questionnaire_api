@@ -132,7 +132,7 @@ export const questionnaireDetailsPath = {
       },
     },
   },
-  put: {
+  patch: {
     security: [
       {
         apiKeyAuth: [],

@@ -76,7 +76,7 @@ export const applierPath = {
 };
 
 export const applierDetailsPath = {
-  put: {
+  patch: {
     security: [
       {
         apiKeyAuth: [],

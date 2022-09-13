@@ -54,7 +54,7 @@ export const answerOptionPath = {
 };
 
 export const answerOptionDetailsPath = {
-  put: {
+  patch: {
     security: [
       {
         apiKeyAuth: [],
