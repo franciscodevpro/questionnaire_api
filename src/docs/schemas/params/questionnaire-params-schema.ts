@@ -22,13 +22,13 @@ export const questionnaireParamsSchema = {
     canBeOnline: {
       type: 'boolean',
     },
-    idDevices: {
+    deviceIds: {
       type: 'array',
       items: {
         type: 'string',
       },
     },
-    idAppliers: {
+    applierIds: {
       type: 'array',
       items: {
         type: 'string',
@@ -43,7 +43,7 @@ export const questionnaireParamsSchema = {
     'link',
     'exceedsQuantity',
     'canBeOnline',
-    'idDevices',
-    'idAppliers',
+    'deviceIds',
+    'applierIds',
   ],
 };
