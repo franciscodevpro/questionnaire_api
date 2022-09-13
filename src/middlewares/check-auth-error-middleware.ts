@@ -4,7 +4,11 @@ import { NextFunction, Request, Response } from 'express';
 @Injectable()
 export class CheckAuthMiddleware implements NestMiddleware {
   async use(req: Request, res: Response, next: NextFunction) {
-    if (req['authError']) return res.json(req['authError']).status(401);
+    console.log(req['authError']);
+    if (req['authError']) {
+      res.status(401);
+      return res.json(req['authError']);
+    }
 
     return next();
   }

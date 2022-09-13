@@ -52,7 +52,10 @@ export class QuestionnaireRepository {
 
   async findAll(applierId?: string) {
     return this.prisma.questionnaire.findMany({
-      where: { isActive: true, ...(!!applierId) && { appliers: { some: {id: applierId} } }  },
+      where: {
+        isActive: true,
+        ...(!!applierId && { appliers: { some: { id: applierId } } }),
+      },
       include: { appliers: true, devices: true },
     });
   }
@@ -65,7 +68,45 @@ export class QuestionnaireRepository {
   }
 
   async update(id: string, data: UpdateQuestionnaireDto) {
-    await this.prisma.questionnaire.update({ where: { id }, data });
+    const {
+      name,
+      image,
+      quantity,
+      endDate,
+      link,
+      exceedsQuantity,
+      canBeOnline,
+      deviceIds,
+      applierIds,
+    } = data;
+    let devices: { connect: { id: string }[] },
+      appliers: { connect: { id: string }[] };
+    if (!!deviceIds)
+      devices = {
+        connect: deviceIds.map((elm) => ({
+          id: elm,
+        })),
+      };
+    if (!!applierIds)
+      appliers = {
+        connect: applierIds.map((elm) => ({
+          id: elm,
+        })),
+      };
+    await this.prisma.questionnaire.update({
+      where: { id },
+      data: {
+        name,
+        image,
+        quantity,
+        endDate,
+        link,
+        exceedsQuantity,
+        canBeOnline,
+        appliers,
+        devices,
+      },
+    });
   }
 
   async remove(id: string) {

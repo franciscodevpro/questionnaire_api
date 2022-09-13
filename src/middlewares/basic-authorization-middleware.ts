@@ -17,30 +17,35 @@ export class BasicAuthorizationMiddleware implements NestMiddleware {
   ) {}
 
   async use(req: Request, _: Response, next: NextFunction) {
-    if (req['authError'] === null) return next();
-    req['authError'] = httpUnauthorizedError();
+    try {
+      if (req['authError'] === null) return next();
+      req['authError'] = httpUnauthorizedError();
 
-    if (!validateBearerValueStructure(req.headers['authorization'] as string))
+      if (!validateBearerValueStructure(req.headers['authorization'] as string))
+        return next();
+
+      const [__, basic] = divideBearerValue(
+        req.headers['authorization'] as string,
+      );
+
+      const [applierId, pin] = getBasicUserPassword(basic);
+
+      if (!applierId || !pin) return next();
+
+      const applier = await this.applierRepository.findOne(applierId);
+      if (!applier) return next();
+
+      const device = await this.deviceRepository.findOneByPin(pin);
+      if (!device) return next();
+
+      req['device'] = device;
+      req['applier'] = applier;
+      req['authError'] = null;
+
       return next();
-
-    const [__, basic] = divideBearerValue(
-      req.headers['authorization'] as string,
-    );
-
-    const [applierId, pin] = getBasicUserPassword(basic);
-
-    if (!applierId || !pin) return next();
-
-    const applier = await this.applierRepository.findOne(applierId);
-    if (!applier) return next();
-
-    const device = await this.deviceRepository.findOneByPin(pin);
-    if (!device) return next();
-
-    req['device'] = device;
-    req['applier'] = applier;
-    req['authError'] = null;
-
-    return next();
+    } catch (err) {
+      req['authError'] = httpUnauthorizedError();
+      return next();
+    }
   }
 }
