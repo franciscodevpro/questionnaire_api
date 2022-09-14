@@ -14,7 +14,7 @@ type SutType = {
 const makeSut = (): SutType => {
   class AnswerServiceStub {
     async create(idQuestionnaireData: string, data: CreateAnswerDto) {
-      Promise.resolve();
+      return Promise.resolve({});
     }
 
     async findAll(idQuestionnaireData: string) {

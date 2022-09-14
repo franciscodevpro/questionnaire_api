@@ -13,7 +13,7 @@ type SutType = {
 const makeSut = (): SutType => {
   class ApplierRepositoryStub {
     async create(data: CreateApplierDto) {
-      Promise.resolve();
+      return Promise.resolve({});
     }
 
     async findAll() {

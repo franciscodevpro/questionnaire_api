@@ -14,7 +14,7 @@ type SutType = {
 const makeSut = (): SutType => {
   class DeviceServiceStub {
     async create(data: CreateDeviceDto) {
-      Promise.resolve();
+      return Promise.resolve({});
     }
 
     async findAll() {
