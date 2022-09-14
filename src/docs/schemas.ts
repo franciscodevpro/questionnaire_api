@@ -12,6 +12,7 @@ import {
   applierParamsSchema,
   deviceParamsSchema,
   questionnaireSchema,
+  questionnaireCreationSchema,
   questionnaireDataSchema,
   questionnaireDataPostSchema,
   questionSchema,
@@ -33,6 +34,7 @@ export default {
   deviceParams: deviceParamsSchema,
 
   questionnaire: questionnaireSchema,
+  questionnaireCreation: questionnaireCreationSchema,
   questionnaireData: questionnaireDataSchema,
   questionnaireDataPost: questionnaireDataPostSchema,
   question: questionSchema,

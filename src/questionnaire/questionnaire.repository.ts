@@ -34,7 +34,7 @@ export class QuestionnaireRepository {
         })),
       };
 
-    await this.prisma.questionnaire.create({
+    return this.prisma.questionnaire.create({
       data: {
         name,
         image,

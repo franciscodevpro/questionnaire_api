@@ -47,7 +47,45 @@ export const questionnaireSchema = {
     'link',
     'exceedsQuantity',
     'canBeOnline',
-    'idDevices',
-    'idAppliers',
+  ],
+};
+
+export const questionnaireCreationSchema = {
+  type: 'object',
+  properties: {
+    id: {
+      type: 'string',
+    },
+    name: {
+      type: 'string',
+    },
+    image: {
+      type: 'string',
+    },
+    quantity: {
+      type: 'string',
+    },
+    endDate: {
+      type: 'string',
+    },
+    link: {
+      type: 'string',
+    },
+    exceedsQuantity: {
+      type: 'boolean',
+    },
+    canBeOnline: {
+      type: 'string',
+    },
+  },
+  required: [
+    'id',
+    'name',
+    'image',
+    'quantity',
+    'endDate',
+    'link',
+    'exceedsQuantity',
+    'canBeOnline',
   ],
 };

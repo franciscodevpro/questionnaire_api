@@ -10,7 +10,7 @@ export class QuestionnaireService {
   ) {}
 
   async create(createQuestionnaireDto: CreateQuestionnaireDto) {
-    await this.questionnaireRepository.create(createQuestionnaireDto);
+    return this.questionnaireRepository.create(createQuestionnaireDto);
   }
 
   async findAll(applierId?: string) {

@@ -22,7 +22,7 @@ export const questionnairePath = {
         content: {
           'application/json': {
             schema: {
-              $ref: '#/schemas/questionnaire',
+              $ref: '#/schemas/questionnaireCreation',
             },
           },
         },
