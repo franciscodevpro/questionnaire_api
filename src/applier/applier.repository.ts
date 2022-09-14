@@ -8,7 +8,7 @@ export class ApplierRepository {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(data: CreateApplierDto) {
-    await this.prisma.applier.create({ data: { ...data, isActive: true } });
+    return this.prisma.applier.create({ data: { ...data, isActive: true } });
   }
 
   async findAll() {

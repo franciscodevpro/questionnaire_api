@@ -8,7 +8,7 @@ export class ApplierService {
   constructor(private readonly applierRepository: ApplierRepository) {}
 
   async create(createApplierDto: CreateApplierDto) {
-    await this.applierRepository.create(createApplierDto);
+    return this.applierRepository.create(createApplierDto);
   }
 
   async findAll() {
