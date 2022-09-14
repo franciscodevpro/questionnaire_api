@@ -8,7 +8,7 @@ export class DeviceService {
   constructor(private readonly deviceRepository: DeviceRepository) {}
 
   async create(createDeviceDto: CreateDeviceDto) {
-    await this.deviceRepository.create(createDeviceDto);
+    return this.deviceRepository.create(createDeviceDto);
   }
 
   async findAll() {

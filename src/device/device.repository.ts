@@ -8,7 +8,7 @@ export class DeviceRepository {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(data: CreateDeviceDto) {
-    await this.prisma.device.create({ data: { ...data, isActive: true } });
+    return this.prisma.device.create({ data: { ...data, isActive: true } });
   }
 
   async findAll() {
