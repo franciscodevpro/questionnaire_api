@@ -19,6 +19,7 @@ import {
   questionCreationSchema,
   answerOptionSchema,
   answerSchema,
+  answerCreationSchema,
   applierSchema,
   deviceSchema,
 } from './schemas/';
@@ -42,6 +43,7 @@ export default {
   questionCreation: questionCreationSchema,
   answerOption: answerOptionSchema,
   answer: answerSchema,
+  answerCreation: answerCreationSchema,
   applier: applierSchema,
   device: deviceSchema,
   account: accountSchema,

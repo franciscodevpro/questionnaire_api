@@ -35,7 +35,7 @@ export const answerPath = {
         content: {
           'application/json': {
             schema: {
-              $ref: '#/schemas/answer',
+              $ref: '#/schemas/answerCreation',
             },
           },
         },

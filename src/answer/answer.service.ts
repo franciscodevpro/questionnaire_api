@@ -8,7 +8,7 @@ export class AnswerService {
   constructor(private readonly answerRepository: AnswerRepository) {}
 
   async create(idQuestionnaireData: string, createAnswerDto: CreateAnswerDto) {
-    await this.answerRepository.create({
+    return this.answerRepository.create({
       ...createAnswerDto,
       idQuestionnaireData,
     });
