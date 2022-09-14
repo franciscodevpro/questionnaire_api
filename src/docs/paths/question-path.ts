@@ -32,7 +32,7 @@ export const questionPath = {
         content: {
           'application/json': {
             schema: {
-              $ref: '#/schemas/question',
+              $ref: '#/schemas/questionCreation',
             },
           },
         },

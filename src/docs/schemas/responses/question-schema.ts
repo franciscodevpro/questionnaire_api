@@ -51,3 +51,51 @@ export const questionSchema = {
     'prioritizeBySelection',
   ],
 };
+
+export const questionCreationSchema = {
+  type: 'object',
+  properties: {
+    id: {
+      type: 'string',
+    },
+    idQuestionnaire: {
+      type: 'string',
+    },
+    title: {
+      type: 'string',
+    },
+    variable: {
+      type: 'string',
+    },
+    type: {
+      type: 'string',
+    },
+    minAnswers: {
+      type: 'integer',
+    },
+    maxAnswers: {
+      type: 'integer',
+    },
+    defaultValue: {
+      type: 'string',
+    },
+    shuffle: {
+      type: 'boolean',
+    },
+    prioritizeBySelection: {
+      type: 'boolean',
+    },
+  },
+  required: [
+    'id',
+    'idQuestionnaire',
+    'title',
+    'variable',
+    'type',
+    'minAnswers',
+    'maxAnswers',
+    'defaultValue',
+    'shuffle',
+    'prioritizeBySelection',
+  ],
+};
