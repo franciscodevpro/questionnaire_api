@@ -22,6 +22,7 @@ import {
   answerCreationSchema,
   applierSchema,
   deviceSchema,
+  audioUploadSchema,
 } from './schemas/';
 
 export default {
@@ -48,5 +49,6 @@ export default {
   device: deviceSchema,
   account: accountSchema,
   accessToken: accessTokenSchema,
+  audioUpload: audioUploadSchema,
   error: errorSchema,
 };
