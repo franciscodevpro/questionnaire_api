@@ -13,7 +13,7 @@ export class AnswerOptionService {
     idQuestion: string,
     createAnswerOptionDto: CreateAnswerOptionDto,
   ) {
-    await this.answerOptionRepository.create({
+    return this.answerOptionRepository.create({
       ...createAnswerOptionDto,
       idQuestion,
     });

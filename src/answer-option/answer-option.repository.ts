@@ -8,7 +8,7 @@ export class AnswerOptionRepository {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(data: CreateAnswerOptionDto & { idQuestion: string }) {
-    await this.prisma.answerOption.create({
+    return this.prisma.answerOption.create({
       data: { ...data, isActive: true },
     });
   }
