@@ -9,9 +9,11 @@ export const generateFileName = (ext: string) => {
 
 export const diskStorageConfiguration = () => ({
   destination: function (req, file, cb) {
+    console.log(file);
     cb(null, './public/uploads');
   },
   filename: function (req, file, cb) {
+    console.log(file);
     cb(null, generateFileName(file.originalname.split('.').slice(-1)[0]));
   },
 });
