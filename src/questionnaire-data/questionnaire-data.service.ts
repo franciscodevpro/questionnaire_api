@@ -13,7 +13,7 @@ export class QuestionnaireDataService {
     idQuestionnaire: string,
     createQuestionnaireDataDto: CreateQuestionnaireDataDto,
   ) {
-    await this.questionnaireDataRepository.create({
+    return this.questionnaireDataRepository.create({
       ...createQuestionnaireDataDto,
       idQuestionnaire,
     });

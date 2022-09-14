@@ -11,9 +11,9 @@ import {
   answerParamsSchema,
   applierParamsSchema,
   deviceParamsSchema,
-
   questionnaireSchema,
   questionnaireDataSchema,
+  questionnaireDataPostSchema,
   questionSchema,
   answerOptionSchema,
   answerSchema,
@@ -34,6 +34,7 @@ export default {
 
   questionnaire: questionnaireSchema,
   questionnaireData: questionnaireDataSchema,
+  questionnaireDataPost: questionnaireDataPostSchema,
   question: questionSchema,
   answerOption: answerOptionSchema,
   answer: answerSchema,
@@ -41,5 +42,5 @@ export default {
   device: deviceSchema,
   account: accountSchema,
   accessToken: accessTokenSchema,
-  error: errorSchema
+  error: errorSchema,
 };

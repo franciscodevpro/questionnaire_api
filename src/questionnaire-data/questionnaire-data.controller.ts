@@ -26,13 +26,11 @@ export class QuestionnaireDataController {
     @Body() createQuestionnaireDataDto: CreateQuestionnaireDataDto,
   ) {
     const { applier, device } = request as any;
-    return this.questionnaireDataService.create(
-      idQuestionnaire,
-      {...createQuestionnaireDataDto, 
-        idDevice: device.id as string,
-        idApplier: applier.id as string,
-      },
-    );
+    return this.questionnaireDataService.create(idQuestionnaire, {
+      ...createQuestionnaireDataDto,
+      idDevice: device.id as string,
+      idApplier: applier.id as string,
+    });
   }
 
   @Get()

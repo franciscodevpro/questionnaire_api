@@ -8,7 +8,7 @@ export class QuestionnaireDataRepository {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(data: CreateQuestionnaireDataDto & { idQuestionnaire: string }) {
-    await this.prisma.questionnaireData.create({
+    return this.prisma.questionnaireData.create({
       data: {
         ...data,
         isActive: true,
