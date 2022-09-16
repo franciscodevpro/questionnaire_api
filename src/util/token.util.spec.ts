@@ -20,7 +20,7 @@ describe('TokenUtil', () => {
       const result = sut.generateToken();
       expect(result).toEqual({
         token: 'any_randomUUID',
-        tokenExpiration: 180000,
+        tokenExpiration: 1800000,
       });
     });
   });
