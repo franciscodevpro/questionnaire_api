@@ -140,7 +140,7 @@ model Answer {
   id                  String  @id @default(uuid())
   idQuestionnaireData String
   idQuestion          String
-  idAnswerOption      String
+  idAnswerOption      String?
   value               String
   duration            Int
   createdAt           String
@@ -148,7 +148,7 @@ model Answer {
 
   questionnaireData QuestionnaireData @relation(references: [id], fields: [idQuestionnaireData])
   question          Question          @relation(references: [id], fields: [idQuestion])
-  answerOption      AnswerOption      @relation(references: [id], fields: [idAnswerOption])
+  answerOption      AnswerOption?      @relation(references: [id], fields: [idAnswerOption])
 
   @@map("answers")
 }
