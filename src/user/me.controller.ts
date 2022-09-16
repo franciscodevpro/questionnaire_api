@@ -5,7 +5,6 @@ import express from 'express';
 export class MeController {
   @Get()
   find(@Request() request: express.Request) {
-    console.log(request['user']);
     return request['user'];
   }
 }

@@ -20,7 +20,6 @@ export class AudioUploadController {
     }),
   )
   uploadFile(@UploadedFile() file: Express.Multer.File) {
-    console.log(file);
     const { mimetype, filename, size } = file;
     return { mimetype, filename, path: `/uploads/${filename}`, size };
   }
