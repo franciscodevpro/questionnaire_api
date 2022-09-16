@@ -28,6 +28,7 @@ export default {
     { name: 'Applier' },
     { name: 'Device' },
     { name: 'Upload' },
+    { name: 'HealthCheck' },
   ],
   paths,
   schemas,

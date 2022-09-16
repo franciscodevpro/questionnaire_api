@@ -20,3 +20,4 @@ export * from './error-schema';
 export * from './api-key-auth-schema';
 export * from './basic-auth-schema';
 export * from './responses/audio-upload-schema';
+export * from './responses/health-check-schema';

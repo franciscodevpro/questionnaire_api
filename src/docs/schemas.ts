@@ -23,6 +23,7 @@ import {
   applierSchema,
   deviceSchema,
   audioUploadSchema,
+  healthCheckSchema,
 } from './schemas/';
 
 export default {
@@ -39,7 +40,7 @@ export default {
   questionnaire: questionnaireSchema,
   questionnaireCreation: questionnaireCreationSchema,
   questionnaireData: questionnaireDataSchema,
-  questionnaireDataPost: questionnaireDataPostSchema,
+  questionnaireDataCreation: questionnaireDataPostSchema,
   question: questionSchema,
   questionCreation: questionCreationSchema,
   answerOption: answerOptionSchema,
@@ -50,5 +51,6 @@ export default {
   account: accountSchema,
   accessToken: accessTokenSchema,
   audioUpload: audioUploadSchema,
+  healthCheck: healthCheckSchema,
   error: errorSchema,
 };

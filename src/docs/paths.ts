@@ -17,6 +17,7 @@ import {
   devicePath,
   deviceDetailsPath,
   audioUploadPath,
+  healthCheckPath,
 } from './paths/';
 export default {
   '/login': loginPath,
@@ -37,4 +38,5 @@ export default {
   '/devices': devicePath,
   '/devices/{id}': deviceDetailsPath,
   '/upload/audio': audioUploadPath,
+  '/healthcheck': healthCheckPath,
 };

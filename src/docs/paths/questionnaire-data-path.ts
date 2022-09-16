@@ -35,7 +35,7 @@ export const questionnaireDataPath = {
         content: {
           'application/json': {
             schema: {
-              $ref: '#/schemas/questionnaireData',
+              $ref: '#/schemas/questionnaireDataCreation',
             },
           },
         },

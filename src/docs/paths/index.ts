@@ -9,3 +9,4 @@ export * from './answer-path';
 export * from './applier-path';
 export * from './device-path';
 export * from './audio-upload-path';
+export * from './health-check-path';
