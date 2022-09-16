@@ -26,6 +26,7 @@ import { MeController } from './user/me.controller';
 import { AudioUploadController } from './audio-upload/audio-upload.controller';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { HealthCheckController } from './health-check/health-check.controller';
 
 @Module({
   imports: [
@@ -48,24 +49,23 @@ import { join } from 'path';
     ApplierRepository,
     DeviceRepository,
   ],
-  controllers: [AudioUploadController],
+  controllers: [HealthCheckController, AudioUploadController],
 })
 export class AppModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(
-        BasicAuthorizationMiddleware,
-      )
+      .apply(BasicAuthorizationMiddleware)
       .forRoutes(
-        {path: 'api/questionnaires*', method: RequestMethod.GET},
+        { path: 'api/questionnaires*', method: RequestMethod.GET },
         QuestionnaireDataController,
-        {path: 'api/questions*', method: RequestMethod.GET},
+        { path: 'api/questions*', method: RequestMethod.GET },
         AnswerController,
       )
-      .apply(
-        BearerAuthorizationMiddleware,
-        CheckAuthMiddleware,
-      ).exclude({ path: 'api/appliers', method: RequestMethod.GET },{ path: 'api/devices', method: RequestMethod.GET })
+      .apply(BearerAuthorizationMiddleware, CheckAuthMiddleware)
+      .exclude(
+        { path: 'api/appliers', method: RequestMethod.GET },
+        { path: 'api/devices', method: RequestMethod.GET },
+      )
       .forRoutes(
         QuestionnaireController,
         QuestionnaireDataController,
@@ -77,7 +77,6 @@ export class AppModule {
         MeController,
       );
 
-      
     /* consumer
     .apply(
       BearerAuthorizationMiddleware,
