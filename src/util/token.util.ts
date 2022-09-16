@@ -6,7 +6,7 @@ import { AccessToken } from 'src/login/entities/token.entity';
 export class TokenUtil {
   public generateToken(): AccessToken {
     const token = crypto.randomUUID();
-    const tokenExpiration = Date.now() + 180000; // set 3 minutes of expiration
+    const tokenExpiration = Date.now() + 1800000; // set 30 minutes of expiration
     return { token, tokenExpiration };
   }
 }
