@@ -56,14 +56,20 @@ export class QuestionnaireRepository {
         isActive: true,
         ...(!!applierId && { appliers: { some: { id: applierId } } }),
       },
-      include: { appliers: true, devices: true },
+      include: {
+        appliers: { where: { isActive: true } },
+        devices: { where: { isActive: true } },
+      },
     });
   }
 
   async findOne(id: string) {
     return this.prisma.questionnaire.findFirstOrThrow({
       where: { id },
-      include: { appliers: true, devices: true },
+      include: {
+        appliers: { where: { isActive: true } },
+        devices: { where: { isActive: true } },
+      },
     });
   }
 
