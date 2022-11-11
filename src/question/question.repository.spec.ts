@@ -1,5 +1,5 @@
-import { QuestionRepository } from './question.repository';
 import { PrismaService } from '../prisma.service';
+import { QuestionRepository } from './question.repository';
 
 type SutType = {
   sut: QuestionRepository;
@@ -58,7 +58,7 @@ describe('QuestionRepository', () => {
       await sut.findAll('any_idQuestionnaire');
       expect(findManySpy).toBeCalledWith({
         where: { idQuestionnaire: 'any_idQuestionnaire', isActive: true },
-        include: { answerOptions: true },
+        include: { answerOptions: { where: { isActive: true } } },
       });
     });
   });
@@ -72,7 +72,7 @@ describe('QuestionRepository', () => {
       await sut.findOne('any_id');
       expect(findFirstOrThrowSpy).toBeCalledWith({
         where: { id: 'any_id' },
-        include: { answerOptions: true },
+        include: { answerOptions: { where: { isActive: true } } },
       });
     });
   });
