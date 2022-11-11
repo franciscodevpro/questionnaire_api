@@ -1,5 +1,5 @@
-import { QuestionnaireRepository } from './questionnaire.repository';
 import { PrismaService } from '../prisma.service';
+import { QuestionnaireRepository } from './questionnaire.repository';
 
 type SutType = {
   sut: QuestionnaireRepository;
@@ -62,7 +62,10 @@ describe('QuestionnaireRepository', () => {
       await sut.findAll();
       expect(findManySpy).toBeCalledWith({
         where: { isActive: true },
-        include: { appliers: true, devices: true },
+        include: {
+          appliers: { where: { isActive: true } },
+          devices: { where: { isActive: true } },
+        },
       });
     });
     it('should filter by applierId', async () => {
@@ -73,7 +76,10 @@ describe('QuestionnaireRepository', () => {
       await sut.findAll('any_applierId');
       expect(findManySpy).toBeCalledWith({
         where: { isActive: true, appliers: { some: { id: 'any_applierId' } } },
-        include: { appliers: true, devices: true },
+        include: {
+          appliers: { where: { isActive: true } },
+          devices: { where: { isActive: true } },
+        },
       });
     });
   });
@@ -87,7 +93,10 @@ describe('QuestionnaireRepository', () => {
       await sut.findOne('any_id');
       expect(findFirstOrThrowSpy).toBeCalledWith({
         where: { id: 'any_id' },
-        include: { appliers: true, devices: true },
+        include: {
+          appliers: { where: { isActive: true } },
+          devices: { where: { isActive: true } },
+        },
       });
     });
   });
