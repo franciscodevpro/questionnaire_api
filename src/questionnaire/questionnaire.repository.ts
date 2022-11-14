@@ -85,20 +85,41 @@ export class QuestionnaireRepository {
       deviceIds,
       applierIds,
     } = data;
-    let devices: { connect: { id: string }[] },
-      appliers: { connect: { id: string }[] };
-    if (!!deviceIds)
+    let devices: any, appliers: any;
+    if (!!deviceIds) {
+      const storedADevices = await this.prisma.device.findMany({
+        where: {
+          isActive: true,
+        },
+      });
       devices = {
+        disconnect: storedADevices
+          .filter((elm) => !applierIds.includes(elm.id))
+          .map((elm) => ({
+            id: elm.id,
+          })),
         connect: deviceIds.map((elm) => ({
           id: elm,
         })),
       };
-    if (!!applierIds)
+    }
+    if (!!applierIds) {
+      const storedAAppliers = await this.prisma.applier.findMany({
+        where: {
+          isActive: true,
+        },
+      });
       appliers = {
+        disconnect: storedAAppliers
+          .filter((elm) => !applierIds.includes(elm.id))
+          .map((elm) => ({
+            id: elm.id,
+          })),
         connect: applierIds.map((elm) => ({
           id: elm,
         })),
       };
+    }
     await this.prisma.questionnaire.update({
       where: { id },
       data: {
