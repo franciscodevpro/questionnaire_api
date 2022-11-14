@@ -107,6 +107,12 @@ describe('QuestionnaireRepository', () => {
       const updateSpy = jest
         .spyOn(prismaServiceStub.questionnaire, 'update')
         .mockImplementation();
+      jest
+        .spyOn(prismaServiceStub.applier, 'findMany')
+        .mockReturnValue([{ id: 'other_applierId' }] as any);
+      jest
+        .spyOn(prismaServiceStub.device, 'findMany')
+        .mockReturnValue([{ id: 'other_deviceId' }] as any);
       await sut.update('any_id', {
         name: 'other_name',
         image: 'other_image',
@@ -125,9 +131,11 @@ describe('QuestionnaireRepository', () => {
           endDate: 'other_endDate',
           link: 'other_link',
           devices: {
+            disconnect: [{ id: 'other_deviceId' }],
             connect: [{ id: 'any_deviceId' }],
           },
           appliers: {
+            disconnect: [{ id: 'other_applierId' }],
             connect: [{ id: 'any_applierId' }],
           },
         },
