@@ -8,4 +8,5 @@ export type QuestionnaireData = {
   lon: string;
   duration: number;
   isActive: boolean;
+  createdAt: string;
 };

@@ -1,5 +1,5 @@
-import * as crypto from 'crypto';
 import { Injectable } from '@nestjs/common';
+import * as crypto from 'crypto';
 import { AccessToken } from 'src/login/entities/token.entity';
 
 @Injectable()

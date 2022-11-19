@@ -127,6 +127,7 @@ model QuestionnaireData {
   lon             String
   duration        Int
   isActive        Boolean
+  createdAt      DateTime      @default(now())
 
   questionnaire Questionnaire @relation(references: [id], fields: [idQuestionnaire])
   applier       Applier       @relation(references: [id], fields: [idApplier])

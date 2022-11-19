@@ -6,4 +6,5 @@ export type CreateQuestionnaireDataDto = {
   lat: string;
   lon: string;
   duration: number;
+  createdAt: string;
 };
