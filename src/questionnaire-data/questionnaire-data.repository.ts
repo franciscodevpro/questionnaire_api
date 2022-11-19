@@ -8,9 +8,11 @@ export class QuestionnaireDataRepository {
   constructor(private readonly prisma: PrismaService) {}
 
   async create(data: CreateQuestionnaireDataDto & { idQuestionnaire: string }) {
+    const enterviewData = new Date(data.createdAt || null);
     return this.prisma.questionnaireData.create({
       data: {
         ...data,
+        createdAt: enterviewData,
         isActive: true,
       },
     });

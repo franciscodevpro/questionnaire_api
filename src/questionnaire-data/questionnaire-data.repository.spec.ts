@@ -29,6 +29,7 @@ describe('QuestionnaireDataRepository', () => {
         lat: 'any_lat',
         lon: 'any_lon',
         duration: 1,
+        createdAt: 'any_datetime',
       });
       expect(createSpy).toBeCalledWith({
         data: {
@@ -40,6 +41,7 @@ describe('QuestionnaireDataRepository', () => {
           lon: 'any_lon',
           duration: 1,
           isActive: true,
+          createdAt: 'any_datetime',
         },
       });
     });
@@ -87,6 +89,7 @@ describe('QuestionnaireDataRepository', () => {
         lat: 'any_lat',
         lon: 'any_lon',
         duration: 1,
+        createdAt: 'any_datetime',
       });
       expect(updateSpy).toBeCalledWith({
         where: { id: 'any_id' },
@@ -98,6 +101,7 @@ describe('QuestionnaireDataRepository', () => {
           lat: 'any_lat',
           lon: 'any_lon',
           duration: 1,
+          createdAt: 'any_datetime',
         },
       });
     });

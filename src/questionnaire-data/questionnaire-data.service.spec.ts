@@ -69,6 +69,7 @@ describe('QuestionnaireDataService', () => {
         lat: 'any_lat',
         lon: 'any_lon',
         duration: 1,
+        createdAt: 'any_datetime',
       });
       expect(createSpy).toBeCalledWith({
         idQuestionnaire: 'any_idQuestionnaire',
@@ -78,6 +79,7 @@ describe('QuestionnaireDataService', () => {
         lat: 'any_lat',
         lon: 'any_lon',
         duration: 1,
+        createdAt: 'any_datetime',
       });
     });
   });
@@ -112,6 +114,7 @@ describe('QuestionnaireDataService', () => {
         lat: 'any_lat',
         lon: 'any_lon',
         duration: 1,
+        createdAt: 'any_datetime',
       });
 
       expect(updateSpy).toBeCalledWith('any_id', {
@@ -122,6 +125,7 @@ describe('QuestionnaireDataService', () => {
         lat: 'any_lat',
         lon: 'any_lon',
         duration: 1,
+        createdAt: 'any_datetime',
       });
     });
   });
