@@ -16,6 +16,7 @@ export class QuestionnaireDataService {
     return this.questionnaireDataRepository.create({
       ...createQuestionnaireDataDto,
       idQuestionnaire,
+      createdAt: createQuestionnaireDataDto.createdAt || null,
     });
   }
 
