@@ -1,5 +1,5 @@
-import paths from './paths';
 import components from './components';
+import paths from './paths';
 import schemas from './schemas';
 
 export default {
@@ -29,6 +29,7 @@ export default {
     { name: 'Device' },
     { name: 'Upload' },
     { name: 'HealthCheck' },
+    { name: 'Reports' },
   ],
   paths,
   schemas,
