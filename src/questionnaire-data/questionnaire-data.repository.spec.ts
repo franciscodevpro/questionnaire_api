@@ -29,7 +29,7 @@ describe('QuestionnaireDataRepository', () => {
         lat: 'any_lat',
         lon: 'any_lon',
         duration: 1,
-        createdAt: 'any_datetime',
+        createdAt: '2023-01-17T00:09:24.215Z',
       });
       expect(createSpy).toBeCalledWith({
         data: {
@@ -41,7 +41,7 @@ describe('QuestionnaireDataRepository', () => {
           lon: 'any_lon',
           duration: 1,
           isActive: true,
-          createdAt: 'any_datetime',
+          createdAt: new Date('2023-01-17T00:09:24.215Z'),
         },
       });
     });

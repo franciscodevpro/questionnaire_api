@@ -82,6 +82,29 @@ describe('QuestionnaireDataService', () => {
         createdAt: 'any_datetime',
       });
     });
+    it('should call repository with null case there is not creaatedAt', async () => {
+      const { sut, questionnaireDataRepositoryStub } = makeSut();
+      const createSpy = jest.spyOn(questionnaireDataRepositoryStub, 'create');
+      await sut.create('any_idQuestionnaire', {
+        idApplier: 'any_idApplier',
+        idDevice: 'any_idDevice',
+        audioPath: 'any_audioPath',
+        lat: 'any_lat',
+        lon: 'any_lon',
+        duration: 1,
+        createdAt: undefined,
+      });
+      expect(createSpy).toBeCalledWith({
+        idQuestionnaire: 'any_idQuestionnaire',
+        idApplier: 'any_idApplier',
+        idDevice: 'any_idDevice',
+        audioPath: 'any_audioPath',
+        lat: 'any_lat',
+        lon: 'any_lon',
+        duration: 1,
+        createdAt: null,
+      });
+    });
   });
 
   describe('#findAll', () => {
