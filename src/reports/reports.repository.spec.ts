@@ -37,14 +37,17 @@ describe('ReportsRepository', () => {
       });
       expect(questionnaireDataSpy).toBeCalledWith({
         where: { idQuestionnaire: 'any_id' },
+        include: { device: true, applier: true },
       });
       expect(questionSpy).toBeCalledWith({
         where: { idQuestionnaire: 'any_id' },
+        include: { answerOptions: { where: { isActive: true } } },
       });
       expect(answerSpy).toBeCalledWith({
         where: {
           idQuestionnaireData: { in: ['any_id', 'other_id'] },
         },
+        include: { question: true, answerOption: true },
       });
     });
   });
