@@ -1,3 +1,5 @@
+import { HttpStatus } from '@nestjs/common/enums';
+import { HttpException } from '@nestjs/common/exceptions';
 import { Test, TestingModule } from '@nestjs/testing';
 import { PrismaService } from '../prisma.service';
 import { UserRepository } from '../user/user.repository';
@@ -58,6 +60,18 @@ describe('LoginController', () => {
   });
 
   describe('#login', () => {
+    it('should call throw an HttpException if login returns null', async () => {
+      const { sut, loginServiceStub } = makeSut();
+      jest.spyOn(loginServiceStub, 'login').mockResolvedValueOnce(null);
+      await expect(
+        sut.login({ login: 'any_login', password: 'any_password' }),
+      ).rejects.toStrictEqual(
+        new HttpException(
+          'Login and password combination error',
+          HttpStatus.BAD_REQUEST,
+        ),
+      );
+    });
     it('should call service method', async () => {
       const { sut, loginServiceStub } = makeSut();
       const loginSpy = jest.spyOn(loginServiceStub, 'login');

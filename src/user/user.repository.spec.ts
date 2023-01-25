@@ -1,5 +1,5 @@
-import { UserRepository } from './user.repository';
 import { PrismaService } from '../prisma.service';
+import { UserRepository } from './user.repository';
 
 type SutType = {
   sut: UserRepository;
@@ -62,11 +62,11 @@ describe('UserRepository', () => {
   describe('#findOneByLogin', () => {
     it('should call repository', async () => {
       const { sut, prismaServiceStub } = makeSut();
-      const findFirstOrThrowSpy = jest
-        .spyOn(prismaServiceStub.user, 'findFirstOrThrow')
+      const findFirstSpy = jest
+        .spyOn(prismaServiceStub.user, 'findFirst')
         .mockImplementation();
       await sut.findOneByLogin('any_login');
-      expect(findFirstOrThrowSpy).toBeCalledWith({
+      expect(findFirstSpy).toBeCalledWith({
         where: { login: 'any_login' },
       });
     });
