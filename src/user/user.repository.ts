@@ -20,7 +20,7 @@ export class UserRepository {
   }
 
   async findOneByLogin(login: string) {
-    return this.prisma.user.findFirstOrThrow({ where: { login } });
+    return this.prisma.user.findFirst({ where: { login } });
   }
 
   async findOneByToken(token: string) {
