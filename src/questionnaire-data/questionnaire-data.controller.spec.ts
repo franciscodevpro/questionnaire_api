@@ -175,7 +175,7 @@ describe('QuestionnaireDataController', () => {
         makeSut();
       const createSpy = jest.spyOn(questionnaireDataServiceStub, 'create');
       const createAnswerSpy = jest.spyOn(answerServiceStub, 'create');
-      await sut.createMultiple(
+      const resultData = await sut.createMultiple(
         {
           applier: { id: 'any_idApplier' },
           device: { id: 'any_idDevice' },
@@ -223,6 +223,7 @@ describe('QuestionnaireDataController', () => {
         createdAt: 'any_createdAt',
         idQuestionnaireData: 'any_idQuestionnaireData',
       });
+      expect(resultData).toStrictEqual([{ id: 'any_idQuestionnaireData' }]);
     });
 
     it('should iterate in each answer option if it be an array', async () => {

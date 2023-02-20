@@ -48,6 +48,7 @@ export class QuestionnaireDataController {
       answers: (CreateAnswerDto & { idAnswerOptions?: string[] })[];
     }[],
   ) {
+    const resultArray = [];
     if (!createQuestionnaireDataDto?.[0])
       throw new HttpException('No data received to register response', HttpStatus.BAD_REQUEST);
     for (let answer of createQuestionnaireDataDto) {
@@ -58,6 +59,8 @@ export class QuestionnaireDataController {
 
       if (!resultData?.id)
         throw new HttpException('Data could not be registered', HttpStatus.INTERNAL_SERVER_ERROR);
+
+      resultArray.push(resultData);
 
       const { id } = resultData;
       
@@ -92,6 +95,8 @@ export class QuestionnaireDataController {
           }
       }
     }
+
+    return resultArray;
   }
 
   @Get()
