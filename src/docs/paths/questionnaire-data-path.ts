@@ -105,6 +105,70 @@ export const questionnaireDataPath = {
   },
 };
 
+export const questionnaireDataMultiplePath = {
+  post: {
+    security: [
+      {
+        apiKeyAuth: [],
+      },
+      {
+        basicAuth: [],
+      },
+    ],
+    tags: ['Questionnaire'],
+    summary: 'API to create multiple new questionnaire data',
+    parameters: [
+      {
+        in: 'query',
+        name: 'idQuestionnaire',
+        required: true,
+        schema: {
+          type: 'string',
+        },
+      },
+    ],
+    requestBody: {
+      content: {
+        'application/json': {
+          schema: {
+            type: 'array',
+            items: {
+              $ref: '#/schemas/questionnaireDataMultipleParams',
+            }
+          },
+        },
+      },
+    },
+    responses: {
+      200: {
+        description: 'Success',
+        content: {
+          'application/json': {
+            schema: {
+              type: 'array',
+              items: {
+                $ref: '#/schemas/questionnaireDataCreation',
+              },
+            },
+          },
+        },
+      },
+      400: {
+        $ref: '#/components/badRequest',
+      },
+      401: {
+        $ref: '#/components/unauthorized',
+      },
+      404: {
+        $ref: '#/components/notFound',
+      },
+      500: {
+        $ref: '#/components/serverError',
+      },
+    },
+  },
+};
+
 export const questionnaireDataDetailsPath = {
   get: {
     security: [

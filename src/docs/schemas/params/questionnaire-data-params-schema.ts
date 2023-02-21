@@ -24,3 +24,18 @@ export const questionnaireDataParamsSchema = {
     'duration',
   ],
 };
+
+export const questionnaireDataMultipleParamsSchema = {
+  type: 'object',
+  properties: {
+    questionnaireData: {
+      $ref: '#/schemas/questionnaireDataParams',
+    },
+    answers: {
+      type: 'array',
+      items: {
+        $ref: '#/schemas/answerParams'
+      },
+    },
+  }
+};
