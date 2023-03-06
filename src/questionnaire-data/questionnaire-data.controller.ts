@@ -41,7 +41,6 @@ export class QuestionnaireDataController {
   @Post('multiple')
   async createMultiple(
     @Request() request: Request,
-    @Query('idQuestionnaire') idQuestionnaire: string,
     @Body()
     createQuestionnaireDataDto: {
       questionnaireData: CreateQuestionnaireDataDto;
@@ -53,7 +52,7 @@ export class QuestionnaireDataController {
       throw new HttpException('No data received to register response', HttpStatus.BAD_REQUEST);
     for (let answer of createQuestionnaireDataDto) {
       const resultData = await this.questionnaireDataService.create(
-        idQuestionnaire,
+        answer.questionnaireData.idQuestionnaire,
         answer.questionnaireData,
       );
 

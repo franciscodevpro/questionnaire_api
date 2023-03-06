@@ -117,16 +117,6 @@ export const questionnaireDataMultiplePath = {
     ],
     tags: ['Questionnaire'],
     summary: 'API to create multiple new questionnaire data',
-    parameters: [
-      {
-        in: 'query',
-        name: 'idQuestionnaire',
-        required: true,
-        schema: {
-          type: 'string',
-        },
-      },
-    ],
     requestBody: {
       content: {
         'application/json': {
