@@ -1,0 +1,6 @@
+{
+    "title": "Questionnaire API",
+    "description": "An API that allows configuration and create research questionnaires and answer them",
+    "images": ["image.png"],
+    "app_url": null
+}
